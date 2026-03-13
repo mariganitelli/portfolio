@@ -3,199 +3,475 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariana Cassiano | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Mariana Cassiano — Allos</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cream: #F5F2ED;
-    --ink: #1A1814;
-    --ink-soft: #3D3A35;
-    --accent: #C4855A;
-    --accent-light: #E8C9B4;
-    --line: rgba(26,24,20,0.12);
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
+    --black: #1A1A1A;
+    --white: #FAFAFA;
+    --gray: #F2F2F0;
+    --gray-mid: #C8C8C4;
+    --gray-dark: #6B6B68;
+    --teal: #0D7A7A;
+    --teal-light: rgba(13,122,122,0.08);
+    --teal-mid: rgba(13,122,122,0.15);
+    --line: rgba(10,10,10,0.1);
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    /* Allos brand */
+    --allos-teal: #0D7A7A;
+    --allos-dark: #0A4040;
+    --allos-block-bg: rgba(13,122,122,0.07);
   }
 
   html { scroll-behavior: smooth; }
-  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
+  body { background: var(--white); color: var(--black); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
 
-  .hero-stats-row { display: flex; gap: 32px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
-  .hero-stat { display: flex; flex-direction: column; gap: 2px; }
-  .hero-stat-num { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); line-height: 1; }
-  .hero-stat-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
-
-  .hero-photo-wrap { position: relative; display: flex; justify-content: center; align-items: center; }
-  .hero-photo { width: 340px; height: 420px; object-fit: cover; object-position: center top; display: block; filter: grayscale(15%); transition: filter 0.4s ease; }
-  .hero-photo:hover { filter: grayscale(0%); }
-  .hero-photo-frame { position: relative; display: inline-block; }
-  .hero-photo-frame::before { content: ''; position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px; border: 1px solid var(--accent-light); z-index: -1; }
-
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; background: var(--cream); border-bottom: 1px solid transparent; transition: border-color 0.4s ease; }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 64px;
+    background: var(--white);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
   nav.scrolled { border-color: var(--line); }
-  .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 0.05em; color: var(--ink); text-decoration: none; }
+  .nav-logo { font-family: var(--sans); font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--black); text-decoration: none; }
   .nav-links { display: flex; gap: 40px; list-style: none; }
-  .nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-dark); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-allos-tag {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--white); background: var(--allos-teal);
+    padding: 5px 14px; font-weight: 500; font-family: var(--sans);
+  }
 
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 120px 60px 60px; gap: 60px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; right: -100px; top: 50%; transform: translateY(-50%); width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%); opacity: 0.4; pointer-events: none; }
-  .hero-text { animation: fadeUp 1s ease both; }
-  .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
-  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
-  .hero-name { font-family: var(--serif); font-size: clamp(52px, 6vw, 88px); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 32px; }
-  .hero-name em { font-style: italic; color: var(--accent); }
-  .hero-tagline { font-size: 16px; line-height: 1.7; color: var(--ink-soft); max-width: 420px; margin-bottom: 48px; }
-  .hero-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 4px; transition: gap 0.3s ease, color 0.2s; }
-  .hero-cta:hover { gap: 20px; color: var(--accent); border-color: var(--accent); }
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 120px 64px 60px;
+    gap: 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -100px; top: 50%;
+    transform: translateY(-50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,122,122,0.1) 0%, transparent 70%);
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+  }
+  .hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-photo-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-photo {
+    width: 340px; height: 420px;
+    object-fit: cover; object-position: center top;
+    display: block;
+    filter: grayscale(15%);
+    transition: filter 0.4s ease;
+  }
+  .hero-photo:hover { filter: grayscale(0%); }
+  .hero-photo-frame {
+    position: relative;
+    display: inline-block;
+  }
+  .hero-photo-frame::before {
+    content: '';
+    position: absolute;
+    top: 16px; left: 16px; right: -16px; bottom: -16px;
+    border: 1px solid rgba(13,122,122,0.35);
+    z-index: -1;
+  }
 
-  section { padding: 100px 60px; }
-  .section-header { display: flex; align-items: baseline; gap: 24px; margin-bottom: 64px; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
-  .section-number { font-size: 11px; letter-spacing: 0.2em; color: var(--accent); font-family: var(--sans); }
-  .section-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); font-weight: 300; letter-spacing: -0.01em; }
+  .hero-candidacy {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .hero-candidacy-line {
+    width: 32px; height: 2px; background: var(--teal);
+  }
+  .hero-candidacy-text {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); font-family: var(--sans); font-weight: 500;
+  }
 
-  .experience { background: white; }
+  /* Allos impact block in hero */
+  .hero-allos-block {
+    background: var(--teal);
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    position: relative; z-index: 2;
+  }
+  .hero-allos-block p {
+    font-family: var(--serif);
+    font-size: 17px; line-height: 1.6; color: var(--white);
+    font-style: italic; margin-bottom: 12px;
+  }
+  .hero-allos-block a {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--white); text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .hero-allos-block a:hover { border-color: white; }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(56px, 6vw, 92px);
+    font-weight: 300; line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 24px;
+    position: relative; z-index: 2;
+  }
+  .hero-name em { font-style: italic; color: var(--teal); }
+  .hero-tagline {
+    font-size: 15px; line-height: 1.8;
+    color: var(--gray-dark);
+    max-width: 400px; margin-bottom: 48px;
+    position: relative; z-index: 2;
+  }
+  .hero-stats {
+    display: flex; gap: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 32px; margin-top: auto;
+    position: relative; z-index: 2;
+  }
+  .hero-stat {
+    flex: 1; padding: 0 24px;
+    border-right: 1px solid var(--line);
+  }
+  .hero-stat:first-child { padding-left: 0; }
+  .hero-stat:last-child { border-right: none; }
+  .hero-stat-num { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--black); line-height: 1; }
+  .hero-stat-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: 100px 64px; }
+  .section-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 64px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+  .section-number { font-size: 10px; letter-spacing: 0.25em; color: var(--teal); font-family: var(--sans); font-weight: 500; }
+  .section-title { font-family: var(--serif); font-size: clamp(36px, 4vw, 56px); font-weight: 300; letter-spacing: -0.01em; }
+
+  /* ALLOS BLOCK */
+  .allos-block {
+    margin-top: 56px;
+    padding: 28px 32px;
+    background: var(--allos-block-bg);
+    border: 1.5px solid var(--allos-teal);
+    border-radius: 4px;
+    display: flex; align-items: flex-start; gap: 20px;
+  }
+  .allos-block-icon { font-size: 20px; flex-shrink: 0; margin-top: 3px; }
+  .allos-block-label {
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--allos-teal); margin-bottom: 8px; font-weight: 600;
+  }
+  .allos-block-text { font-size: 14px; line-height: 1.8; color: var(--gray-dark); }
+
+  /* TIMELINE */
+  .experience { background: var(--white); }
   .timeline { display: grid; gap: 0; }
-  .timeline-item { display: grid; grid-template-columns: 200px 1px 1fr; gap: 0 40px; padding: 48px 0; border-bottom: 1px solid var(--line); opacity: 1; transition: opacity 0.6s ease, transform 0.6s ease; }
-  .timeline-period { font-size: 12px; letter-spacing: 0.05em; color: var(--accent); padding-top: 4px; text-align: right; }
+  .timeline-item {
+    display: grid; grid-template-columns: 180px 1px 1fr;
+    gap: 0 40px; padding: 48px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .timeline-period { font-size: 11px; letter-spacing: 0.08em; color: var(--teal); padding-top: 4px; text-align: right; font-weight: 500; }
   .timeline-line { background: var(--line); position: relative; }
-  .timeline-line::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
-  .timeline-company { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 4px; }
-  .timeline-role { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-  .timeline-desc { font-size: 14px; line-height: 1.8; color: var(--ink-soft); max-width: 560px; }
+  .timeline-line::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--teal); }
+  .timeline-company { font-family: var(--serif); font-size: 24px; font-weight: 400; margin-bottom: 4px; }
+  .timeline-role { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; font-weight: 500; }
+  .timeline-desc { font-size: 14px; line-height: 1.8; color: var(--gray-dark); max-width: 560px; }
   .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-  .tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--line); padding: 4px 12px; border-radius: 2px; }
+  .tag { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-dark); border: 1px solid var(--line); padding: 4px 12px; }
 
-  .projects { background: var(--cream); }
+  /* PROJECTS */
+  .projects { background: var(--gray); }
+  .projects .section-title { color: var(--black); }
+  .projects .section-number { color: var(--teal); }
+  .projects .section-header { border-color: var(--line); }
   .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-  .project-card { background: white; padding: 40px 32px; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .project-card:hover { transform: translateY(-6px); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-  .project-category { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
-  .project-title { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; margin-bottom: 16px; }
-  .project-desc { font-size: 13px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 24px; }
-  .project-result { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--accent); border-top: 1px solid var(--line); padding-top: 20px; }
-  .project-icon { position: absolute; top: 32px; right: 32px; font-size: 28px; opacity: 0.15; transition: opacity 0.3s, transform 0.3s; }
-  .project-card:hover .project-icon { opacity: 0.4; transform: scale(1.2) rotate(5deg); }
+  .project-card {
+    background: var(--gray);
+    padding: 40px 32px; position: relative; overflow: hidden;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    border-top: 2px solid transparent;
+  }
+  .project-card:hover { background: #E8F5F5; transform: translateY(-4px); border-top-color: var(--teal); }
+  .project-category { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; font-weight: 500; }
+  .project-title { font-family: var(--serif); font-size: 26px; font-weight: 300; line-height: 1.2; margin-bottom: 16px; color: var(--black); }
+  .project-desc { font-size: 13px; line-height: 1.7; color: var(--gray-dark); margin-bottom: 24px; }
+  .project-result { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--teal); border-top: 1px solid var(--line); padding-top: 20px; }
+  .project-icon { position: absolute; top: 28px; right: 28px; font-size: 24px; opacity: 0.1; transition: opacity 0.3s, transform 0.3s; }
+  .project-card:hover .project-icon { opacity: 0.3; transform: scale(1.2) rotate(5deg); }
 
-  .digital-projects { background: var(--ink); padding: 80px 60px; }
-  .digital-projects .section-number { color: var(--accent); }
-  .digital-projects .section-title { color: var(--cream); }
-  .digital-projects .section-header { border-color: rgba(245,242,237,0.12); }
-  .digital-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
-  .digital-card { position: relative; background: rgba(245,242,237,0.04); border: 1px solid rgba(196,133,90,0.2); border-radius: 2px; padding: 48px 40px; overflow: hidden; transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s ease; }
-  .digital-card:hover { background: rgba(196,133,90,0.08); border-color: var(--accent); transform: translateY(-4px); }
-  .digital-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.35s ease; }
-  .digital-card:hover::before { opacity: 1; }
-  .digital-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(196,133,90,0.35); padding: 4px 12px; border-radius: 2px; margin-bottom: 28px; }
-  .digital-badge::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: dpulse 2s infinite; }
-  @keyframes dpulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
-  .digital-title { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 8px; }
-  .digital-subtitle { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
-  .digital-desc { font-size: 14px; line-height: 1.8; color: rgba(245,242,237,0.6); margin-bottom: 32px; }
-  .digital-features { display: flex; flex-wrap: wrap; gap: 8px; }
-  .digital-feature { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,237,0.5); border: 1px solid rgba(245,242,237,0.12); padding: 5px 12px; border-radius: 2px; transition: color 0.25s, border-color 0.25s; }
-  .digital-card:hover .digital-feature { color: rgba(196,133,90,0.85); border-color: rgba(196,133,90,0.3); }
-  .digital-icon-bg { position: absolute; right: -20px; bottom: -20px; font-size: 120px; opacity: 0.04; transition: opacity 0.35s, transform 0.35s; pointer-events: none; line-height: 1; }
-  .digital-card:hover .digital-icon-bg { opacity: 0.07; transform: scale(1.1) rotate(-5deg); }
-
-  .awards { background: var(--ink); color: var(--cream); }
-  .awards .section-title { color: var(--cream); }
-  .awards .section-number { color: var(--accent); }
-  .awards .section-header { border-color: rgba(245,242,237,0.15); }
-  .award-item { display: flex; align-items: center; gap: 48px; padding: 48px 0; border-bottom: 1px solid rgba(245,242,237,0.1); }
-  .award-icon-wrap { width: 80px; height: 80px; border: 1px solid rgba(196,133,90,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
-  .award-year { font-size: 11px; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 8px; }
-  .award-title { font-family: var(--serif); font-size: 28px; font-weight: 300; margin-bottom: 8px; }
-  .award-desc { font-size: 14px; line-height: 1.7; color: rgba(245,242,237,0.6); }
-
-  .skills-section { background: white; }
-  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
-  .skill-group { padding: 40px 32px; background: var(--cream); }
-  .skill-group-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
-  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  .skill-list li { font-size: 14px; font-weight: 400; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-  .skill-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
-  .course-list { list-style: none; display: flex; flex-direction: column; }
-  .course-list li { display: flex; flex-direction: column; padding: 12px 0; border-bottom: 1px solid var(--line); }
-  .course-list li:last-child { border-bottom: none; }
-  .course-name { font-size: 13px; font-weight: 400; color: var(--ink-soft); line-height: 1.4; margin-bottom: 3px; }
-  .course-meta { font-size: 11px; letter-spacing: 0.05em; color: var(--accent); }
-
-  .contact { background: var(--cream); text-align: center; padding: 120px 60px; }
-  .contact-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
-  .contact-headline { font-family: var(--serif); font-size: clamp(40px, 6vw, 80px); font-weight: 300; line-height: 1.1; margin-bottom: 48px; }
-  .contact-links { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
-  .contact-link { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s, gap 0.3s; }
-  .contact-link:hover { color: var(--accent); border-color: var(--accent); gap: 16px; }
-
-  footer { background: var(--ink); color: rgba(245,242,237,0.4); text-align: center; padding: 32px; font-size: 12px; letter-spacing: 0.05em; }
-
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-  /* Modal */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,24,20,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
-  .modal-overlay.active { display: flex; }
-  .modal-content { background: white; max-width: 680px; width: 90%; padding: 48px; position: relative; max-height: 85vh; overflow-y: auto; }
-  .modal-close { position: absolute; top: 20px; right: 24px; font-size: 24px; cursor: pointer; color: var(--ink-soft); background: none; border: none; line-height: 1; }
-  .modal-title { font-family: var(--serif); font-size: 32px; font-weight: 300; margin-bottom: 16px; }
-  .modal-body { font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
-
-  /* Gallery */
-  .gallery-section { background: white; padding: 80px 60px; }
-  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-  .gallery-item { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 1/1; background: var(--ink); }
-  .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease, filter 0.4s ease; filter: grayscale(20%); }
+  /* GALLERY */
+  .gallery-section { background: var(--gray); padding: 80px 64px; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .gallery-item { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 1/1; background: var(--gray); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease, filter 0.4s ease; filter: grayscale(30%); }
   .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%); }
-  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(26,24,20,0.75)); color: white; font-size: 11px; letter-spacing: 0.06em; padding: 24px 14px 12px; opacity: 0; transition: opacity 0.3s ease; }
+  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(10,10,10,0.8)); color: white; font-size: 10px; letter-spacing: 0.06em; padding: 24px 12px 10px; opacity: 0; transition: opacity 0.3s; }
   .gallery-item:hover .gallery-caption { opacity: 1; }
 
-  /* Lightbox */
-  .lightbox { display: none; position: fixed; inset: 0; background: rgba(10,8,6,0.97); z-index: 2000; align-items: center; justify-content: center; flex-direction: column; }
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(5,5,5,0.97); z-index: 2000; align-items: center; justify-content: center; flex-direction: column; }
   .lightbox.active { display: flex; }
   .lightbox img { max-width: 92vw; max-height: 88vh; width: auto; height: auto; object-fit: contain; display: block; }
-  .lightbox-caption { color: rgba(245,242,237,0.6); font-size: 12px; letter-spacing: 0.1em; margin-top: 16px; }
-  .lightbox-close { position: absolute; top: 24px; right: 32px; color: white; font-size: 28px; background: none; border: none; cursor: pointer; opacity: 0.7; line-height: 1; z-index: 10; }
+  .lightbox-caption { color: rgba(250,250,250,0.5); font-size: 11px; letter-spacing: 0.1em; margin-top: 16px; }
+  .lightbox-close { position: absolute; top: 24px; right: 32px; color: white; font-size: 28px; background: none; border: none; cursor: pointer; opacity: 0.6; line-height: 1; z-index: 10; }
   .lightbox-close:hover { opacity: 1; }
-  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 36px; cursor: pointer; opacity: 0.5; padding: 16px; transition: opacity 0.2s; z-index: 10; }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 36px; cursor: pointer; opacity: 0.4; padding: 16px; transition: opacity 0.2s; z-index: 10; }
   .lightbox-nav:hover { opacity: 1; }
   .lightbox-prev { left: 16px; }
   .lightbox-next { right: 16px; }
 
-  /* Personal */
-  .personal-section { background: var(--ink); padding: 100px 60px; }
-  .personal-section .section-title { color: var(--cream); }
-  .personal-section .section-number { color: var(--accent); }
-  .personal-section .section-header { border-color: rgba(245,242,237,0.12); }
+  /* PERSONAL */
+  .personal-section { background: var(--white); padding: 100px 64px; }
   .personal-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start; }
   .personal-cards { display: flex; flex-direction: column; gap: 2px; }
-  .personal-card { display: flex; gap: 20px; align-items: flex-start; padding: 28px 24px; background: rgba(245,242,237,0.04); border-left: 2px solid transparent; transition: border-color 0.3s, background 0.3s; }
-  .personal-card:hover { border-color: var(--accent); background: rgba(196,133,90,0.06); }
-  .personal-card-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
-  .personal-card-title { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
-  .personal-card-text { font-size: 13px; line-height: 1.7; color: rgba(245,242,237,0.55); }
-  .personal-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .personal-photo { overflow: hidden; cursor: pointer; background: rgba(245,242,237,0.05); aspect-ratio: 1/1; }
-  .personal-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease, filter 0.4s ease; filter: grayscale(30%); }
+  .personal-card { display: flex; gap: 20px; align-items: flex-start; padding: 24px 20px; border-left: 2px solid transparent; transition: border-color 0.3s, background 0.3s; }
+  .personal-card:hover { border-color: var(--teal); background: var(--teal-light); }
+  .personal-card-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+  .personal-card-title { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--black); margin-bottom: 6px; }
+  .personal-card-text { font-size: 13px; line-height: 1.7; color: var(--gray-dark); }
+  .personal-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .personal-photo { overflow: hidden; cursor: pointer; aspect-ratio: 1/1; }
+  .personal-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s, filter 0.4s; filter: grayscale(20%); }
   .personal-photo:hover img { transform: scale(1.06); filter: grayscale(0%); }
 
-  @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-    .hero::before { display: none; }
-    section { padding: 64px 24px; }
-    .timeline-item { grid-template-columns: 1fr; gap: 16px; }
-    .timeline-period { text-align: left; }
-    .timeline-line { display: none; }
-    .digital-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: 1fr 1fr; }
-    .award-item { flex-direction: column; align-items: flex-start; gap: 24px; }
+  /* FERRAMENTAS */
+  .ferramentas { background: var(--gray); padding: 80px 64px; }
+  .ferramentas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .ferramenta-card { background: var(--white); padding: 48px 40px; position: relative; overflow: hidden; transition: transform 0.3s; }
+  .ferramenta-card:hover { transform: translateY(-4px); }
+  .ferramenta-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
+  .ferramenta-card:hover::after { transform: scaleX(1); }
+  .ferramenta-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); border: 1px solid var(--teal); padding: 4px 12px; margin-bottom: 24px; }
+  .ferramenta-title { font-family: var(--serif); font-size: 30px; font-weight: 300; line-height: 1.15; margin-bottom: 8px; }
+  .ferramenta-subtitle { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; font-weight: 500; }
+  .ferramenta-desc { font-size: 14px; line-height: 1.8; color: var(--gray-dark); margin-bottom: 24px; }
+  .ferramenta-features { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ferramenta-feature { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-dark); border: 1px solid var(--line); padding: 4px 12px; }
+  .ferramenta-icon-bg { position: absolute; right: -10px; bottom: -10px; font-size: 100px; opacity: 0.04; transition: opacity 0.3s; pointer-events: none; line-height: 1; }
+  .ferramenta-card:hover .ferramenta-icon-bg { opacity: 0.07; }
+
+  /* AWARDS */
+  .awards { background: var(--gray); color: var(--black); }
+  .awards .section-title { color: var(--black); }
+  .awards .section-number { color: var(--teal); }
+  .awards .section-header { border-color: var(--line); }
+  .award-item { display: flex; align-items: center; gap: 48px; padding: 48px 0; border-bottom: 1px solid var(--line); }
+  .award-icon-wrap { width: 72px; height: 72px; border: 1px solid rgba(13,122,122,0.4); display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .award-year { font-size: 10px; letter-spacing: 0.15em; color: var(--teal); margin-bottom: 8px; font-weight: 500; }
+  .award-title { font-family: var(--serif); font-size: 26px; font-weight: 300; margin-bottom: 8px; }
+  .award-desc { font-size: 14px; line-height: 1.7; color: var(--gray-dark); }
+
+  /* SKILLS */
+  .skills-section { background: var(--white); }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .skill-group { padding: 40px 32px; background: var(--gray); }
+  .skill-group-title { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; font-weight: 600; }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .skill-list li { font-size: 14px; font-weight: 400; color: var(--gray-dark); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .skill-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--teal); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+
+  /* COURSES */
+  .courses { background: var(--gray); }
+  .course-list { list-style: none; display: flex; flex-direction: column; }
+  .course-list li { display: flex; flex-direction: column; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .course-list li:last-child { border-bottom: none; }
+  .course-name { font-size: 13px; font-weight: 400; color: var(--gray-dark); line-height: 1.4; margin-bottom: 3px; }
+  .course-meta { font-size: 10px; letter-spacing: 0.05em; color: var(--teal); font-weight: 500; }
+
+  /* ALLOS SECTION */
+  .allos-section { background: var(--white); padding: 100px 64px; }
+  .allos-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 48px; }
+  .allos-why-card { background: var(--gray); padding: 40px 32px; }
+  .allos-why-card-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--allos-teal); margin-bottom: 16px; font-weight: 600; }
+  .allos-why-card-title { font-family: var(--serif); font-size: 20px; font-weight: 400; margin-bottom: 14px; line-height: 1.3; }
+  .allos-why-card-text { font-size: 13px; line-height: 1.8; color: var(--gray-dark); }
+  .allos-why-card-dark { background: var(--gray); }
+  .allos-why-card-dark .allos-why-card-title { color: var(--black); }
+  .allos-why-card-dark .allos-why-card-text { color: #ffffff; }
+  .allos-why-card-dark .allos-why-card-label { color: rgba(255,255,255,0.85); }
+  .allos-quote { padding: 48px; background: var(--teal); width: 100%; }
+  .allos-quote p { font-family: var(--serif); font-size: 24px; font-weight: 300; line-height: 1.5; color: var(--white); font-style: italic; margin-bottom: 20px; }
+  .allos-quote span { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); font-weight: 500; }
+
+  /* CONTACT */
+  .contact { background: var(--gray); text-align: center; padding: 120px 64px; }
+  .contact-eyebrow { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; font-weight: 500; }
+  .contact-headline { font-family: var(--serif); font-size: clamp(44px, 6vw, 84px); font-weight: 300; line-height: 1.1; margin-bottom: 48px; color: var(--black); }
+  .contact-headline em { font-style: italic; color: var(--teal); }
+  .contact-links { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .contact-link { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.8); text-decoration: none; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.4); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s, gap 0.3s; }
+  .contact-link:hover { color: white; border-color: white; gap: 16px; }
+
+  footer { background: var(--gray); color: rgba(255,255,255,0.6); text-align: center; padding: 24px; font-size: 11px; letter-spacing: 0.05em; border-top: 1px solid rgba(255,255,255,0.15); }
+
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(5,5,5,0.9); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+  .modal-overlay.active { display: flex; }
+  .modal-content { background: var(--white); max-width: 680px; width: 90%; padding: 48px; position: relative; max-height: 85vh; overflow-y: auto; }
+  .modal-close { position: absolute; top: 20px; right: 24px; font-size: 22px; cursor: pointer; color: var(--gray-dark); background: none; border: none; line-height: 1; }
+  .modal-title { font-family: var(--serif); font-size: 30px; font-weight: 300; margin-bottom: 16px; }
+  .modal-body { font-size: 14px; line-height: 1.8; color: var(--gray-dark); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-left > * { animation: fadeUp 0.8s ease both; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.4s; }
+
+  /* ── iPad (768px – 1024px) ── */
+  @media (max-width: 1024px) {
+    nav { padding: 20px 32px; }
+    .nav-links { gap: 24px; }
+    .nav-allos-tag { display: none; }
+    .hero { grid-template-columns: 1fr 1fr; padding: 100px 40px 60px; gap: 40px; }
+    .hero-photo { width: 280px; height: 360px; }
+    .hero-name { font-size: clamp(44px, 5vw, 72px); }
+    section { padding: 80px 40px; }
+    .gallery-section, .ferramentas, .personal-section, .allos-section, .courses { padding: 80px 40px; }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .allos-why-grid { grid-template-columns: repeat(2, 1fr); }
+    .ferramentas-grid { grid-template-columns: 1fr; }
     .personal-grid { grid-template-columns: 1fr; }
-    .personal-section { padding: 64px 24px; }
-    .gallery-section { padding: 64px 24px; }
-    .digital-projects { padding: 64px 24px; }
+    .personal-photo-grid { grid-template-columns: repeat(3, 1fr); }
+    .contact { padding: 80px 40px; }
+    .contact-links { gap: 28px; }
+  }
+
+  /* ── Mobile (até 767px) ── */
+  @media (max-width: 767px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .nav-allos-tag { display: none; }
+
+    .hero { grid-template-columns: 1fr; padding: 100px 20px 48px; gap: 40px; }
+    .hero-right { order: 1; }
+    .hero-photo { width: 240px; height: 300px; }
+    .hero-photo-frame::before { display: none; }
+    .hero-left { padding: 80px 20px 48px; }
+    .hero-name { font-size: clamp(48px, 12vw, 72px); }
+    .hero-tagline { font-size: 14px; }
+    .hero-stats { gap: 0; flex-wrap: wrap; }
+    .hero-stat { min-width: 50%; padding: 12px 16px; border-right: none; border-bottom: 1px solid var(--line); }
+    .hero-allos-block p { font-size: 15px; }
+
+    section { padding: 56px 20px; }
+    .gallery-section, .ferramentas, .personal-section, .allos-section, .courses { padding: 56px 20px; }
+
+    .section-title { font-size: clamp(28px, 8vw, 40px); }
+
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; padding: 32px 0; }
+    .timeline-period { text-align: left; font-size: 10px; }
+    .timeline-line { display: none; }
+    .timeline-company { font-size: 20px; }
+    .timeline-desc { font-size: 13px; }
+
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card { padding: 32px 24px; }
+    .project-title { font-size: 22px; }
+
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 3px; }
+
+    .personal-grid { grid-template-columns: 1fr; }
+    .personal-photo-grid { grid-template-columns: repeat(2, 1fr); gap: 3px; }
+
+    .ferramentas-grid { grid-template-columns: 1fr; }
+    .ferramenta-card { padding: 32px 24px; }
+
+    .award-item { flex-direction: column; gap: 16px; padding: 32px 0; }
+    .award-title { font-size: 22px; }
+
+    .skills-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+    .skill-group { padding: 28px 20px; }
+
+    div[style*="grid-template-columns:1fr 1fr 1fr"] { display: grid !important; grid-template-columns: 1fr !important; }
+
+    .allos-why-grid { grid-template-columns: 1fr; }
+    .allos-why-card { padding: 28px 24px; }
+    .allos-quote { padding: 32px 24px; }
+    .allos-quote p { font-size: 18px; }
+
+    .allos-block { padding: 20px 20px; gap: 14px; }
+    .allos-block-text { font-size: 13px; }
+
+    .contact { padding: 72px 20px; }
+    .contact-headline { font-size: clamp(36px, 10vw, 60px); }
+    .contact-links { flex-direction: column; align-items: center; gap: 20px; }
+    .contact-link { font-size: 11px; }
+
+    .lightbox-nav { font-size: 28px; padding: 10px; }
+    .lightbox-close { top: 16px; right: 20px; font-size: 24px; }
+  }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; gap: 5px; justify-content: center;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--black); transition: all 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile {
+    display: none;
+    position: fixed; top: 56px; left: 0; right: 0;
+    background: var(--white);
+    flex-direction: column;
+    z-index: 99;
+    border-bottom: 1px solid var(--line);
+    padding: 8px 0;
+  }
+  .nav-mobile.open { display: flex; }
+  .nav-mobile a {
+    padding: 14px 24px;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--black); text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-mobile a:last-child { border-bottom: none; }
+  .nav-mobile a:hover { color: var(--teal); background: var(--teal-light); }
+
+  @media (max-width: 767px) {
+    .nav-hamburger { display: flex; }
   }
 </style>
 </head>
@@ -206,34 +482,56 @@
   <ul class="nav-links">
     <li><a href="#experiencia">Experiência</a></li>
     <li><a href="#projetos">Projetos</a></li>
-    <li><a href="#projetos-digitais">Ferramentas</a></li>
     <li><a href="#premios">Prêmios</a></li>
+    <li><a href="#allos">Por que a Allos</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
+  <span class="nav-allos-tag">Candidatura Allos</span>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="#experiencia" onclick="closeMenu()">Experiência</a>
+  <a href="#projetos" onclick="closeMenu()">Projetos</a>
+  <a href="#premios" onclick="closeMenu()">Prêmios</a>
+  <a href="#allos" onclick="closeMenu()">Por que a Allos</a>
+  <a href="#contato" onclick="closeMenu()">Contato</a>
+</div>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-text">
-    <p class="hero-eyebrow">Portfólio · Marketing & Eventos</p>
+  <div class="hero-left">
+    <div class="hero-candidacy">
+      <div class="hero-candidacy-line"></div>
+      <span class="hero-candidacy-text">Portfólio · Marketing & Eventos</span>
+    </div>
+
+    <div class="hero-allos-block">
+      <p>"Este portfólio foi preparado para a Allos. Cada projeto aqui tem algo a dizer sobre por que essa vaga e eu somos um match."</p>
+      <a href="#allos">Ver por que sou o match →</a>
+    </div>
+
     <h1 class="hero-name">Mariana<br><em>Cassiano</em></h1>
     <p class="hero-tagline">Do branding ao CRM, do evento presencial à campanha digital, com mais de 7 anos integrando todas as frentes do marketing. Não sou especialista em uma única disciplina: sou a profissional que conecta todas elas.</p>
-    <a href="#projetos" class="hero-cta">Ver projetos →</a>
-    <div class="hero-stats-row">
-      <div class="hero-stat"><span class="hero-stat-num">7+</span><span class="hero-stat-label">anos</span></div>
-      <div class="hero-stat"><span class="hero-stat-num">4×</span><span class="hero-stat-label">BBB/ES</span></div>
-      <div class="hero-stat"><span class="hero-stat-num">1°</span><span class="hero-stat-label">Aberje</span></div>
-      <div class="hero-stat"><span class="hero-stat-num">360°</span><span class="hero-stat-label">marketing</span></div>
+
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">7+</div><div class="hero-stat-label">anos</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">4×</div><div class="hero-stat-label">BBB/ES</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">1°</div><div class="hero-stat-label">Aberje</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">360°</div><div class="hero-stat-label">marketing</div></div>
     </div>
   </div>
-  <div class="hero-photo-wrap">
-    <div class="hero-photo-frame">
-      <img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_1.png" class="hero-photo" alt="Mariana Cassiano">
+  <div class="hero-right">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_1.png" class="hero-photo" alt="Mariana Cassiano">
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Experience -->
+<!-- EXPERIENCE -->
 <section class="experience" id="experiencia">
   <div class="section-header">
     <span class="section-number">01</span>
@@ -247,10 +545,8 @@
       <div class="timeline-content">
         <div class="timeline-company">Fotus Distribuidora Solar</div>
         <div class="timeline-role">Analista de CRM Pleno</div>
-        <div class="timeline-desc">Responsável pela estruturação e evolução do ecossistema de CRM da empresa. Desenvolvo fluxos de automação, segmentação de base e réguas de relacionamento para os setores solar e agro, conectando dados com narrativa de marca. Atuo de forma integrada com as áreas comercial e de marketing para garantir que cada ponto de contato com o cliente seja consistente, relevante e orientado a resultado.</div>
-        <div class="timeline-tags">
-          <span class="tag">CRM</span><span class="tag">Automação</span><span class="tag">Segmentação</span><span class="tag">Solar & Agro</span><span class="tag">B2B</span>
-        </div>
+        <div class="timeline-desc">Responsável pela estruturação e evolução do ecossistema de CRM da empresa. Desenvolvo fluxos de automação, segmentação de base e réguas de relacionamento para os setores solar e agro, conectando dados com narrativa de marca.</div>
+        <div class="timeline-tags"><span class="tag">CRM</span><span class="tag">Automação</span><span class="tag">Segmentação</span><span class="tag">B2B</span></div>
       </div>
     </div>
 
@@ -260,10 +556,8 @@
       <div class="timeline-content">
         <div class="timeline-company">Fotus Distribuidora Solar</div>
         <div class="timeline-role">Analista de Planejamento de Marketing</div>
-        <div class="timeline-desc">Responsável pelo estudo de mercado e pela construção do mote e da campanha anual da Fotus, apresentada na Intersolar South America, a maior feira e congresso de energia solar da América Latina. Desenvolvi o planejamento estratégico da jornada do cliente para o evento, criando a narrativa que posicionou a marca diante de expositores, investidores e especialistas do setor de todo o Brasil e do exterior.</div>
-        <div class="timeline-tags">
-          <span class="tag">Planejamento Estratégico</span><span class="tag">Jornada do Cliente</span><span class="tag">Intersolar</span><span class="tag">B2B</span>
-        </div>
+        <div class="timeline-desc">Responsável pelo estudo de mercado e pela construção do mote e da campanha anual da Fotus, apresentada na Intersolar South America, a maior feira de energia solar da América Latina.</div>
+        <div class="timeline-tags"><span class="tag">Planejamento</span><span class="tag">Jornada do Cliente</span><span class="tag">Intersolar</span><span class="tag">B2B</span></div>
       </div>
     </div>
 
@@ -273,10 +567,8 @@
       <div class="timeline-content">
         <div class="timeline-company">Rede Gazeta (Afiliada TV Globo)</div>
         <div class="timeline-role">Analista de Marketing</div>
-        <div class="timeline-desc">Vencedora do Prêmio Aberje Regional 2023 com a campanha "Informação de Verdade". Liderou por 4 anos consecutivos a ativação do confessionário do BBB no Espírito Santo. Coordenou ativações de novelas da TV Globo no estado, integrando experiência de marca, produção de eventos e comunicação digital. Atuou em planejamento de campanhas, gestão de eventos de diferentes portes, criação de conteúdo digital e interface com clientes, agências e fornecedores.</div>
-        <div class="timeline-tags">
-          <span class="tag">Eventos</span><span class="tag">Branding</span><span class="tag">Campanhas</span><span class="tag">Mídia</span><span class="tag">B2C</span>
-        </div>
+        <div class="timeline-desc">Vencedora do Prêmio Aberje Regional 2023 com a campanha "Informação de Verdade". Liderei por 4 anos consecutivos a ativação do confessionário do BBB no Espírito Santo. Coordenei ativações de novelas da TV Globo no estado, planejamento de campanhas, gestão de eventos e interface com clientes, agências e fornecedores.</div>
+        <div class="timeline-tags"><span class="tag">Eventos</span><span class="tag">Branding</span><span class="tag">Campanhas</span><span class="tag">Mídia</span></div>
       </div>
     </div>
 
@@ -287,9 +579,7 @@
         <div class="timeline-company">Rede Gazeta (Afiliada TV Globo)</div>
         <div class="timeline-role">Assistente de Marketing</div>
         <div class="timeline-desc">Desenvolvimento de planejamentos de comunicação, criação de campanhas publicitárias, produção de criativos para canais on e offline, aprovação de conceito e interface com clientes, agências e fornecedores.</div>
-        <div class="timeline-tags">
-          <span class="tag">Comunicação</span><span class="tag">Criativos</span><span class="tag">Campanhas</span>
-        </div>
+        <div class="timeline-tags"><span class="tag">Comunicação</span><span class="tag">Criativos</span><span class="tag">Campanhas</span></div>
       </div>
     </div>
 
@@ -299,7 +589,7 @@
       <div class="timeline-content">
         <div class="timeline-company">Rede Gazeta (Afiliada TV Globo)</div>
         <div class="timeline-role">Estagiária de Criação</div>
-        <div class="timeline-desc">Criação de conteúdo para redes sociais, desenvolvimento de artes para comunicação on/off e produção de apresentações de conteúdo.</div>
+        <div class="timeline-desc">Criação de conteúdo para redes sociais, desenvolvimento de artes para comunicação on/off e produção de apresentações.</div>
       </div>
     </div>
 
@@ -314,9 +604,17 @@
     </div>
 
   </div>
+
+  <div class="allos-block">
+    <span class="allos-block-icon">🛍️</span>
+    <div>
+      <div class="allos-block-label">✦ Conexão com Allos</div>
+      <div class="allos-block-text">A Allos opera shoppings em todo o Brasil com times de marketing responsáveis por campanhas on e off, gestão de fornecedores, KPIs e contratos. Minha trajetória na Rede Gazeta, quase 6 anos gerindo campanhas multicanal com múltiplos fornecedores e métricas de performance, reflete exatamente o dia a dia descrito na vaga.</div>
+    </div>
+  </div>
 </section>
 
-<!-- Projects -->
+<!-- PROJECTS -->
 <section class="projects" id="projetos">
   <div class="section-header">
     <span class="section-number">02</span>
@@ -341,7 +639,7 @@
       <div class="project-category">Estratégia B2B</div>
       <div class="project-title">Campanha Anual Fotus</div>
       <div class="project-desc">Criação do mote e campanha anual apresentada na Intersolar South America, a maior feira de energia solar da América Latina.</div>
-      <div class="project-result">Narrativa posicionada diante de expositores e investidores nacionais e internacionais.</div>
+      <div class="project-result">Narrativa posicionada diante de investidores nacionais e internacionais.</div>
       <div class="project-icon">☀️</div>
     </div>
     <div class="project-card" data-reveal onclick="openModal('novelas')">
@@ -361,14 +659,22 @@
     <div class="project-card" data-reveal onclick="openModal('branding')">
       <div class="project-category">Branding</div>
       <div class="project-title">Construção de Marca</div>
-      <div class="project-desc">Criação de identidade visual completa para dois produtos digitais da Rede Gazeta: HZ (conteúdo jovem) e Fonte Hub (criadores).</div>
+      <div class="project-desc">Criação de identidade visual completa para dois produtos digitais da Rede Gazeta: HZ e Fonte Hub.</div>
       <div class="project-result">Naming, conceito, logotipo, manual de marca e guidelines.</div>
       <div class="project-icon">🎨</div>
     </div>
   </div>
+
+  <div class="allos-block">
+    <span class="allos-block-icon">📱</span>
+    <div>
+      <div class="allos-block-label">✦ Conexão com Allos</div>
+      <div class="allos-block-text" style="color:var(--gray-dark);">A vaga pede planejamento e execução de redes sociais, OOH e comunicação 360. Os projetos acima mostram justamente isso: campanhas integradas on e off, ativações presenciais de grande porte e gestão de toda a cadeia criativa, do briefing à entrega.</div>
+    </div>
+  </div>
 </section>
 
-<!-- Gallery -->
+<!-- GALLERY -->
 <section class="gallery-section" id="galeria">
   <div class="section-header">
     <span class="section-number">03</span>
@@ -386,7 +692,7 @@
   </div>
 </section>
 
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" onclick="closeLightbox()">✕</button>
   <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">←</button>
@@ -395,7 +701,7 @@
   <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">→</button>
 </div>
 
-<!-- Personal -->
+<!-- PERSONAL -->
 <section class="personal-section" id="pessoal">
   <div class="section-header">
     <span class="section-number">04</span>
@@ -405,37 +711,30 @@
     <div class="personal-cards">
       <div class="personal-card" data-reveal>
         <div class="personal-card-icon">🏄‍♀️</div>
-        <div>
-          <div class="personal-card-title">Surf & Natureza</div>
-          <div class="personal-card-text">Amor pelo mar, pela natureza e pela fotografia. O surf é minha meditação e fonte de equilíbrio.</div>
-        </div>
+        <div><div class="personal-card-title">Surf & Natureza</div><div class="personal-card-text">Amor pelo mar, pela natureza e pela fotografia. O surf é minha meditação e fonte de equilíbrio.</div></div>
       </div>
       <div class="personal-card" data-reveal>
         <div class="personal-card-icon">❤️</div>
-        <div>
-          <div class="personal-card-title">Família & Vitória</div>
-          <div class="personal-card-text">Noiva da Vitória, com quem compartilho a vida, os sonhos e o amor pelo Flamengo.</div>
-        </div>
+        <div><div class="personal-card-title">Família & Vitória</div><div class="personal-card-text">Noiva da Vitória, com quem compartilho a vida, os sonhos e o amor pelo Flamengo.</div></div>
       </div>
       <div class="personal-card" data-reveal>
         <div class="personal-card-icon">👨‍👩‍👧‍👦</div>
-        <div>
-          <div class="personal-card-title">Minha família é meu hobby</div>
-          <div class="personal-card-text">Meu hobby preferido é simplesmente estar com minha mãe, meu pai e meu irmão. As conversas abertas com a minha mãe, as brincadeiras sem noção do meu pai e explorar todos os esportes com meu irmão. Nao tem coisa melhor.</div>
-        </div>
+        <div><div class="personal-card-title">Minha família é meu hobby</div><div class="personal-card-text">Meu hobby preferido é simplesmente estar com minha mãe, meu pai e meu irmão. As conversas abertas com a minha mãe, as brincadeiras sem noção do meu pai e explorar todos os esportes com meu irmão. Não tem coisa melhor.</div></div>
       </div>
       <div class="personal-card" data-reveal>
         <div class="personal-card-icon">🐱</div>
-        <div>
-          <div class="personal-card-title">Lord, o guerreiro</div>
-          <div class="personal-card-text">Amor incondicional pelo Lord, um gatinho hidrocefálico que venceu todas as expectativas dos veterinários e hoje completa 7 anos. Ele é prova viva de que força e carinho fazem milagres.</div>
-        </div>
+        <div><div class="personal-card-title">Lord, o guerreiro</div><div class="personal-card-text">Amor incondicional pelo Lord, um gatinho hidrocefálico que venceu todas as expectativas dos veterinários e hoje completa 7 anos. Ele é prova viva de que força e carinho fazem milagres.</div></div>
       </div>
       <div class="personal-card" data-reveal>
         <div class="personal-card-icon">💡</div>
+        <div><div class="personal-card-title">Curiosidade & Aprendizado</div><div class="personal-card-text">Sempre buscando aprender algo novo, seja um instrumento, uma linguagem de programação ou uma nova receita.</div></div>
+      </div>
+
+      <div class="allos-block" style="margin-top:24px;">
+        <span class="allos-block-icon">🏬</span>
         <div>
-          <div class="personal-card-title">Curiosidade & Aprendizado</div>
-          <div class="personal-card-text">Sempre buscando aprender algo novo, seja um instrumento, uma linguagem de programação ou uma nova receita.</div>
+          <div class="allos-block-label">✦ Conexão com Allos</div>
+          <div class="allos-block-text">Shopping é sobre experiência e conexão com as pessoas. Esses valores estão no centro de quem sou: alguém que se importa com o outro, que gosta de criar experiências memoráveis e que entende que o varejo é, acima de tudo, sobre gente.</div>
         </div>
       </div>
     </div>
@@ -450,57 +749,63 @@
   </div>
 </section>
 
-<!-- Ferramentas -->
-<section class="digital-projects" id="projetos-digitais">
+<!-- FERRAMENTAS -->
+<section class="ferramentas" id="ferramentas">
   <div class="section-header">
     <span class="section-number">05</span>
     <h2 class="section-title">Ferramentas</h2>
   </div>
-  <div class="digital-grid">
-    <div class="digital-card" data-reveal>
-      <div class="digital-badge">Side Project</div>
-      <div class="digital-title">Fotus Planner</div>
-      <div class="digital-subtitle">Planejamento · Conteúdo · IA</div>
-      <div class="digital-desc">Sistema de planejamento de marketing construído do zero para a Fotus. Substituiu a gestão em planilhas e centralizou todo o planejamento editorial em uma única interface web, com integração de IA para auxiliar na criação de copy.</div>
-      <div class="digital-features">
-        <span class="digital-feature">Planejador de Conteúdo</span>
-        <span class="digital-feature">Banco de Ideias</span>
-        <span class="digital-feature">Gestão de Campanhas</span>
-        <span class="digital-feature">Integração com IA</span>
-        <span class="digital-feature">Briefing Automatizado</span>
+  <div class="ferramentas-grid">
+    <div class="ferramenta-card" data-reveal>
+      <div class="ferramenta-badge">Side Project</div>
+      <div class="ferramenta-title">Fotus Planner</div>
+      <div class="ferramenta-subtitle">Planejamento · Conteúdo · IA</div>
+      <div class="ferramenta-desc">Sistema de planejamento de marketing construído do zero para a Fotus. Substituiu a gestão em planilhas e centralizou todo o planejamento editorial em uma única interface web, com integração de IA para auxiliar na criação de copy.</div>
+      <div class="ferramenta-features">
+        <span class="ferramenta-feature">Planejador de Conteúdo</span>
+        <span class="ferramenta-feature">Banco de Ideias</span>
+        <span class="ferramenta-feature">Gestão de Campanhas</span>
+        <span class="ferramenta-feature">Integração com IA</span>
       </div>
-      <div class="digital-icon-bg">🗓️</div>
+      <div class="ferramenta-icon-bg">🗓️</div>
     </div>
-    <div class="digital-card" data-reveal>
-      <div class="digital-badge">Side Project</div>
-      <div class="digital-title">OneBase</div>
-      <div class="digital-subtitle">CRM · Dados · Segmentação</div>
-      <div class="digital-desc">Plataforma interna de gestão de base de dados para a equipe comercial da Fotus. Import de planilhas, deduplicação por CNPJ, filtros avançados, listas segmentadas e exportação, com controle de acesso por perfil.</div>
-      <div class="digital-features">
-        <span class="digital-feature">Import CSV/XLSX</span>
-        <span class="digital-feature">Deduplicação</span>
-        <span class="digital-feature">Filtros dinâmicos</span>
-        <span class="digital-feature">Listas salvas</span>
-        <span class="digital-feature">Exportação</span>
-        <span class="digital-feature">Controle de acesso</span>
+    <div class="ferramenta-card" data-reveal>
+      <div class="ferramenta-badge">Side Project</div>
+      <div class="ferramenta-title">OneBase</div>
+      <div class="ferramenta-subtitle">CRM · Dados · Segmentação</div>
+      <div class="ferramenta-desc">Plataforma interna de gestão de base de dados para a equipe comercial da Fotus. Importação de planilhas, deduplicação por CNPJ, filtros avançados, listas segmentadas e exportação, com controle de acesso por perfil.</div>
+      <div class="ferramenta-features">
+        <span class="ferramenta-feature">Import CSV/XLSX</span>
+        <span class="ferramenta-feature">Deduplicação</span>
+        <span class="ferramenta-feature">Filtros dinâmicos</span>
+        <span class="ferramenta-feature">Exportação</span>
       </div>
-      <div class="digital-icon-bg">🗄️</div>
+      <div class="ferramenta-icon-bg">🗄️</div>
+    </div>
+  </div>
+
+  <div class="allos-block" style="margin-top:32px;">
+    <span class="allos-block-icon">📊</span>
+    <div>
+      <div class="allos-block-label">✦ Conexão com Allos</div>
+      <div class="allos-block-text">A vaga cita conhecimento em ferramentas de análise de KPI, MLabs e gestão de dados. Construir ferramentas do zero mostra que não me limito a usar plataformas: entendo os processos por trás delas. Esse perfil se traduz em alguém que adapta, resolve e entrega, independente da ferramenta disponível.</div>
     </div>
   </div>
 </section>
 
-<!-- Awards -->
+<!-- AWARDS -->
 <section class="awards" id="premios">
   <div class="section-header">
     <span class="section-number">06</span>
     <h2 class="section-title">Reconhecimentos</h2>
   </div>
+
   <div class="award-item" data-reveal>
     <div class="award-icon-wrap">🏆</div>
     <div>
       <div class="award-year">2023</div>
       <div class="award-title">Prêmio Aberje Regional</div>
-      <div class="award-desc">Melhor campanha institucional pela campanha "Informação de Verdade", uma estratégia de combate às fake news em período eleitoral desenvolvida na Rede Gazeta (afiliada TV Globo). O Aberje é o maior prêmio de comunicação empresarial do Brasil.</div>
+      <div class="award-desc">Melhor campanha institucional pela campanha "Informação de Verdade", estratégia de combate às fake news em período eleitoral desenvolvida na Rede Gazeta. O Aberje é o maior prêmio de comunicação empresarial do Brasil.</div>
     </div>
   </div>
   <div class="award-item" data-reveal>
@@ -508,7 +813,7 @@
     <div>
       <div class="award-year">2023</div>
       <div class="award-title">Certificação Excel Avançado</div>
-      <div class="award-desc">Certificação técnica em Microsoft Excel nível avançado, ampliando capacidade de análise de dados, construção de dashboards e relatórios de performance para tomada de decisão em marketing.</div>
+      <div class="award-desc">Certificação técnica em Microsoft Excel nível avançado, ampliando capacidade de análise de dados, construção de dashboards e relatórios de performance.</div>
     </div>
   </div>
   <div class="award-item" data-reveal>
@@ -516,12 +821,20 @@
     <div>
       <div class="award-year">Pós-Graduação</div>
       <div class="award-title">Gestão de Eventos</div>
-      <div class="award-desc">Especialização pela Universidade Anhanguera (2024–2025), complementando a graduação em Publicidade e Propaganda pela Estácio (2015–2019) com base teórica e prática para gestão completa de eventos corporativos e de grande porte.</div>
+      <div class="award-desc">Especialização pela Universidade Anhanguera (2024-2025), complementando a graduação em Publicidade e Propaganda pela Estácio (2015-2019).</div>
+    </div>
+  </div>
+
+  <div class="allos-block" style="background:rgba(13,122,122,0.1);border-color:var(--allos-teal);">
+    <span class="allos-block-icon">🥇</span>
+    <div>
+      <div class="allos-block-label">✦ Conexão com Allos</div>
+      <div class="allos-block-text" style="color:var(--gray-dark);">Um Prêmio Aberje no currículo é um diferencial raro. Ele demonstra que a qualidade do meu trabalho já foi reconhecida pelo maior prêmio de comunicação empresarial do Brasil, algo que eleva o padrão de qualquer campanha que venha a desenvolver para a Allos.</div>
     </div>
   </div>
 </section>
 
-<!-- Skills -->
+<!-- SKILLS -->
 <section class="skills-section" id="habilidades">
   <div class="section-header">
     <span class="section-number">07</span>
@@ -548,7 +861,7 @@
         <li>HubSpot</li>
         <li>Google Analytics</li>
         <li>Looker Studio</li>
-        <li>Dashboard com Excel ✦</li>
+        <li>Dashboard com Excel</li>
       </ul>
     </div>
     <div class="skill-group" data-reveal>
@@ -570,13 +883,22 @@
         <li>Adobe Suite</li>
         <li>Fotografia Profissional</li>
         <li>Suite Office</li>
+        <li>MLabs</li>
       </ul>
+    </div>
+  </div>
+
+  <div class="allos-block" style="margin-top:32px;">
+    <span class="allos-block-icon">🎯</span>
+    <div>
+      <div class="allos-block-label">✦ Conexão com Allos</div>
+      <div class="allos-block-text">A vaga menciona MLabs, ferramentas ADS e análise de KPIs como conhecimentos desejáveis. Meta Ads, Google Analytics, Looker Studio e MLabs já fazem parte da minha rotina. Cada competência listada aqui foi construída com aplicação prática imediata em contextos reais de alta exigência.</div>
     </div>
   </div>
 </section>
 
-<!-- Courses -->
-<section class="skills-section" id="cursos" style="background:var(--cream);">
+<!-- COURSES -->
+<section class="courses" id="cursos">
   <div class="section-header">
     <span class="section-number">08</span>
     <h2 class="section-title">Cursos & Certificações</h2>
@@ -610,12 +932,71 @@
       </ul>
     </div>
   </div>
+
+  <div class="allos-block" style="margin-top:32px;">
+    <span class="allos-block-icon">📚</span>
+    <div>
+      <div class="allos-block-label">✦ Conexão com Allos</div>
+      <div class="allos-block-text">Cada certificação aqui foi aplicada imediatamente na prática. O curso de IA e Data Overload da ESPM, por exemplo, reflete a visão de quem entende que o marketing moderno exige domínio de dados e tecnologia, exatamente o perfil que a Allos busca para a sua plataforma digital e física.</div>
+    </div>
+  </div>
 </section>
 
-<!-- Contact -->
+<!-- ALLOS SECTION -->
+<section class="allos-section" id="allos">
+  <div class="section-header">
+    <span class="section-number">09</span>
+    <h2 class="section-title">Por que eu para a Allos</h2>
+  </div>
+
+  <div style="margin-bottom:48px;">
+    <p style="font-size:16px;line-height:1.8;color:var(--gray-dark);margin-bottom:20px;">A vaga de Analista de Marketing Pleno do Shopping Vila Velha reúne exatamente o que construí ao longo de mais de 7 anos: campanhas on e off, gestão de redes sociais, análise de KPIs, OOH, controle de contratos e relacionamento com fornecedores. Não como conhecimentos isolados, mas como prática integrada do dia a dia.</p>
+    <p style="font-size:16px;line-height:1.8;color:var(--gray-dark);">E tem mais: Shopping Vila Velha é a minha cidade. Conheço o público, o contexto e o potencial desse empreendimento. Estou pronta para contribuir desde o primeiro dia.</p>
+  </div>
+
+  <div class="allos-why-grid">
+    <div class="allos-why-card">
+      <div class="allos-why-card-label">Redes Sociais</div>
+      <div class="allos-why-card-title">Planejamento e execução com agência já é a minha rotina</div>
+      <div class="allos-why-card-text">Na Rede Gazeta, gerenciei a interface com agências para produção de conteúdo, aprovação de peças, cronogramas e publicações. Instagram, Facebook e o ecossistema digital fazem parte do meu histórico.</div>
+    </div>
+    <div class="allos-why-card">
+      <div class="allos-why-card-label">KPIs & Relatórios</div>
+      <div class="allos-why-card-title">Dados e PDCA fazem parte de como eu trabalho</div>
+      <div class="allos-why-card-text">Alcance, engajamento, CPC, CPM e construção de dashboards são parte da minha rotina. Na Fotus, estruturei relatórios de performance e análises para tomada de decisão do time comercial e de marketing.</div>
+    </div>
+    <div class="allos-why-card">
+      <div class="allos-why-card-label">OOH & Comunicação 360</div>
+      <div class="allos-why-card-title">Quase 6 anos gerindo campanhas on e off simultaneamente</div>
+      <div class="allos-why-card-text">Na Rede Gazeta, planejei e executei campanhas em múltiplos canais, incluindo mídia OOH, materiais impressos, eventos e digital. A gestão simultânea de diferentes frentes é algo que já domino.</div>
+    </div>
+    <div class="allos-why-card">
+      <div class="allos-why-card-label">Contratos & Fornecedores</div>
+      <div class="allos-why-card-title">Controle administrativo e gestão de fornecedores já fazem parte da minha entrega</div>
+      <div class="allos-why-card-text">Gerenciei contratos, aprovações, cronogramas e múltiplos fornecedores em projetos de alta visibilidade como as ativações do BBB e campanhas da TV Globo.</div>
+    </div>
+    <div class="allos-why-card">
+      <div class="allos-why-card-label">Formação</div>
+      <div class="allos-why-card-title">Publicidade e Propaganda mais pós-graduação em Gestão de Eventos</div>
+      <div class="allos-why-card-text">Atendo ao requisito de formação com a graduação pela Estácio em Publicidade e Propaganda, reforçada por pós-graduação em Gestão de Eventos e diversas certificações em marketing digital e IA.</div>
+    </div>
+    <div class="allos-why-card allos-why-card-dark">
+      <div class="allos-why-card-label">O diferencial</div>
+      <div class="allos-why-card-title">Sou de Vila Velha e conheço o Shopping por dentro</div>
+      <div class="allos-why-card-text">Já trabalhei com ativações no Shopping Vitória, conheço a dinâmica do varejo capixaba e o perfil do consumidor local. Isso não é teoria: é vivência. Estou pronta para somar desde o primeiro dia.</div>
+    </div>
+  </div>
+
+  <div class="allos-quote">
+    <p>"Não sou especialista em uma única disciplina: sou a profissional que integra todas elas. E é exatamente isso que uma vaga como essa exige."</p>
+    <span>Mariana Cassiano</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section class="contact" id="contato">
   <p class="contact-eyebrow">Vamos conversar</p>
-  <h2 class="contact-headline">Pronta para<br><em style="font-family:var(--serif);font-style:italic;color:var(--accent);">o próximo capítulo</em></h2>
+  <h2 class="contact-headline">Pronta para<br><em>o próximo capítulo</em></h2>
   <div class="contact-links">
     <a href="mailto:mari.anitelli@gmail.com" class="contact-link">✉ mari.anitelli@gmail.com</a>
     <a href="https://linkedin.com/in/marifcass/" class="contact-link" target="_blank">linkedin.com/in/marifcass</a>
@@ -625,7 +1006,7 @@
 
 <footer>© 2026 Mariana da Fonseca Garcia Cassiano · Marketing & Eventos · Vila Velha, ES</footer>
 
-<!-- Project Modal -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
   <div class="modal-content">
     <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active');document.body.style.overflow=''">✕</button>
@@ -635,11 +1016,10 @@
 </div>
 
 <script>
-  // ── Lightbox ──────────────────────────────────────────────────────────────
   const galleries = {
     prof: [
-      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_8.jpg',  caption: 'Confessionário BBB — influenciadores' },
-      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_9.jpg',  caption: 'Confessionário BBB 22 — Shopping Vitória' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_8.jpg', caption: 'Confessionário BBB — influenciadores' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_9.jpg', caption: 'Confessionário BBB 22 — Shopping Vitória' },
       { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_10.jpg', caption: 'Confessionário BBB — estrutura' },
       { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_11.jpg', caption: 'Jornal do Campo — evento' },
       { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_12.jpg', caption: 'Ativação BBB — mascote' },
@@ -648,140 +1028,87 @@
       { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_15.jpg', caption: 'BBB — confessionário bastidores' },
     ],
     personal: [
-      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_2.jpg', caption: 'Na praia — amor pelo surf e natureza' },
-      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_4.jpg', caption: 'Com Vitória — noivado' },
-      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_6.jpg', caption: 'Celebrando o noivado' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_2.jpg', caption: 'Na praia' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_4.jpg', caption: 'Com Vitória' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_6.jpg', caption: 'Noivado' },
       { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_7.jpg', caption: 'Com Vitória' },
-      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_3.jpg', caption: 'Corrida do Flamengo' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_3.jpg', caption: 'Flamengo' },
       { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_5.jpg', caption: 'Família Flamengo' },
     ]
   };
 
   let activeGallery = null, activeIndex = 0;
 
+
+  function toggleMenu() {
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('mobileMenu');
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+
   function openLightbox(gallery, index) {
-    activeGallery = gallery;
-    activeIndex = index;
-    renderLightbox();
+    activeGallery = gallery; activeIndex = index; renderLightbox();
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
   function renderLightbox() {
     const item = galleries[activeGallery][activeIndex];
     document.getElementById('lightbox-img').src = item.src;
     document.getElementById('lightbox-caption').textContent = item.caption;
   }
-
   function navLightbox(dir) {
     const len = galleries[activeGallery].length;
     activeIndex = (activeIndex + dir + len) % len;
     renderLightbox();
   }
-
   function closeLightbox() {
     document.getElementById('lightbox').classList.remove('active');
     document.body.style.overflow = '';
   }
-
-  document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
-
+  document.getElementById('lightbox').addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
   document.addEventListener('keydown', function(e) {
     if (!document.getElementById('lightbox').classList.contains('active')) return;
-    if (e.key === 'ArrowLeft')  navLightbox(-1);
+    if (e.key === 'ArrowLeft') navLightbox(-1);
     if (e.key === 'ArrowRight') navLightbox(1);
-    if (e.key === 'Escape')     closeLightbox();
+    if (e.key === 'Escape') closeLightbox();
   });
 
-  // ── Navbar ────────────────────────────────────────────────────────────────
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // ── Reveal ────────────────────────────────────────────────────────────────
   const observer = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
-    });
+    entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
-  // ── Modals ────────────────────────────────────────────────────────────────
   const modalData = {
-    bbb: {
-      title: '🎙️ Confessionário BBB: 4 anos consecutivos',
-      body: `<p>Por 4 edições consecutivas do Big Brother Brasil, coordenei a ativação oficial no Espírito Santo, um dos projetos de maior visibilidade e exigência da Rede Gazeta.</p><br>
-      <p><strong>Responsabilidades:</strong> gestão completa de fornecedores, produção, comunicação com TV Globo, logística e experiência do público ao vivo.</p><br>
-      <p><strong>Desafio:</strong> prazo fixo (transmissão ao vivo), padrão de qualidade TV Globo, alta exposição pública e coordenação de múltiplas equipes simultâneas.</p><br>
-      <p><strong>Resultado:</strong> projeto executado com excelência por 4 anos, reconhecido internamente e base para o Prêmio Aberje 2023.</p>`
-    },
-    aberje: {
-      title: '🏆 Prêmio Aberje Regional 2023',
-      body: `<p>A campanha <strong>"Informação de Verdade"</strong> foi concebida em período eleitoral com um objetivo claro: posicionar a Rede Gazeta como fonte confiável diante do cenário de desinformação.</p><br>
-      <p><strong>Conceito:</strong> combate às fake news com responsabilidade editorial, alcance de massa e linguagem acessível ao público capixaba.</p><br>
-      <p><strong>Reconhecimento:</strong> Prêmio Aberje Regional, o maior prêmio de comunicação empresarial do Brasil, categoria institucional.</p>`
-    },
-    intersolar: {
-      title: '☀️ Campanha Anual Fotus: Intersolar South America',
-      body: `<p>Responsável pelo estudo de mercado e pela construção do mote e da campanha anual da Fotus, apresentada na <strong>Intersolar South America</strong>, a maior feira e congresso de energia solar da América Latina, com público nacional e internacional.</p><br>
-      <p><strong>O que construí:</strong> planejamento estratégico da jornada do cliente para o evento, criando a narrativa que posicionou a marca diante de expositores, investidores e especialistas do setor de todo o Brasil e do exterior.</p>`
-    },
-    novelas: {
-      title: '📺 Ativações de Novelas Globo',
-      body: `<p>Gestão de ativações de campanhas de novelas da TV Globo no Espírito Santo, com coordenação de fornecedores, materiais gráficos, ações ao vivo e alinhamento com o padrão da emissora.</p><br>
-      <p><strong>Projetos:</strong> múltiplas novelas ao longo de quase 6 anos na Rede Gazeta, cada uma com identidade visual e mecânica distintas.</p>`
-    },
-    crm: {
-      title: '📊 Estruturação de CRM: Fotus',
-      body: `<p>Responsável pela estruturação e evolução do ecossistema de CRM da Fotus. Fluxos de automação, segmentação de base e réguas de relacionamento para os setores solar e agro, conectando dados com narrativa de marca.</p><br>
-      <p><strong>Atuação integrada</strong> com as áreas comercial e de marketing para garantir que cada ponto de contato com o cliente seja consistente, relevante e orientado a resultado.</p>`
-    },
-    branding: {
-      title: '🎨 Construção de Marca: Rede Gazeta',
-      body: `<p>Liderei a criação de identidade visual completa para dois produtos digitais da Rede Gazeta, do zero ao manual de marca.</p><br>
-      <p><strong>HZ</strong>: plataforma de conteúdo jovem. Naming, logotipo, paleta, tipografia, versões monocromáticas e manual completo.</p><br>
-      <p><strong>Fonte Hub</strong>: hub de criadores de conteúdo. Identidade visual, posicionamento e sistema visual integrado ao ecossistema da emissora.</p>
-      <div style="margin-top:28px;">
-        <p style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Documentos</p>
-        <div style="display:flex;flex-direction:column;gap:10px;">
-          <a href="https://drive.google.com/file/d/1y95JMCFUA59l0CMzY9XswayZGJcI-Rrt/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-            <span style="font-size:18px;">📄</span><span style="flex:1;">Fonte Hub — Identidade Visual</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
-          </a>
-          <a href="https://drive.google.com/file/d/1oTyRmVPiQheKqyLVTk6Lr9a2qHuW-B-f/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-            <span style="font-size:18px;">📄</span><span style="flex:1;">Fonte Hub — Briefing e Naming</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
-          </a>
-          <a href="https://drive.google.com/file/d/1SLTztIrYqFSRS5Qtl6rjCShsOzSkbAUC/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-            <span style="font-size:18px;">📄</span><span style="flex:1;">HZ — Briefing e Naming</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
-          </a>
-          <a href="https://drive.google.com/file/d/1ngKUglGT0YJmIoPoED5Utkay49VhDI8S/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
-            <span style="font-size:18px;">📄</span><span style="flex:1;">HZ — Manual de Marca</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
-          </a>
-        </div>
-      </div>`
-    }
+    bbb: { title: '🎙️ Confessionário BBB: 4 anos consecutivos', body: `<p>Por 4 edições consecutivas do Big Brother Brasil, coordenei a ativação oficial no Espírito Santo, um dos projetos de maior visibilidade e exigência da Rede Gazeta.</p><br><p><strong>Responsabilidades:</strong> gestão completa de fornecedores, produção, comunicação com TV Globo, logística e experiência do público ao vivo.</p><br><p><strong>Resultado:</strong> projeto executado com excelência por 4 anos, reconhecido internamente e base para o Prêmio Aberje 2023.</p>` },
+    aberje: { title: '🏆 Prêmio Aberje Regional 2023', body: `<p>A campanha <strong>"Informação de Verdade"</strong> foi concebida em período eleitoral com um objetivo claro: posicionar a Rede Gazeta como fonte confiável diante do cenário de desinformação.</p><br><p><strong>Reconhecimento:</strong> Prêmio Aberje Regional, o maior prêmio de comunicação empresarial do Brasil, categoria institucional.</p>` },
+    intersolar: { title: '☀️ Campanha Anual Fotus: Intersolar South America', body: `<p>Responsável pelo estudo de mercado e pela construção do mote e da campanha anual da Fotus, apresentada na <strong>Intersolar South America</strong>, a maior feira de energia solar da América Latina.</p><br><p>Planejamento estratégico da jornada do cliente para o evento, criando a narrativa que posicionou a marca diante de expositores, investidores e especialistas de todo o Brasil e do exterior.</p>` },
+    novelas: { title: '📺 Ativações de Novelas Globo', body: `<p>Gestão de ativações de campanhas de novelas da TV Globo no Espírito Santo, com coordenação de fornecedores, materiais gráficos, ações ao vivo e alinhamento com o padrão da emissora.</p><br><p>Múltiplas novelas ao longo de quase 6 anos na Rede Gazeta, cada uma com identidade visual e mecânica distintas.</p>` },
+    crm: { title: '📊 Estruturação de CRM: Fotus', body: `<p>Responsável pela estruturação e evolução do ecossistema de CRM da Fotus. Fluxos de automação, segmentação de base e réguas de relacionamento para os setores solar e agro, conectando dados com narrativa de marca.</p>` },
+    branding: { title: '🎨 Construção de Marca: Rede Gazeta', body: `<p>Liderei a criação de identidade visual completa para dois produtos digitais da Rede Gazeta, do zero ao manual de marca.</p><br><p><strong>HZ:</strong> plataforma de conteúdo jovem. Naming, logotipo, paleta, tipografia e manual completo.</p><br><p><strong>Fonte Hub:</strong> hub de criadores de conteúdo. Identidade visual e sistema visual integrado ao ecossistema da emissora.</p>` }
   };
 
   function openModal(key) {
-    const data = modalData[key];
-    document.getElementById('modal-title').textContent = data.title;
-    document.getElementById('modal-body').innerHTML = data.body;
+    document.getElementById('modal-title').textContent = modalData[key].title;
+    document.getElementById('modal-body').innerHTML = modalData[key].body;
     document.getElementById('modal').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
-
   function closeModal(e) {
     if (e && e.target !== document.getElementById('modal')) return;
     document.getElementById('modal').classList.remove('active');
     document.body.style.overflow = '';
   }
-
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.getElementById('modal').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    if (e.key === 'Escape') { document.getElementById('modal').classList.remove('active'); document.body.style.overflow = ''; }
   });
 </script>
 </body>
