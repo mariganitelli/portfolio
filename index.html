@@ -1,12 +1,9 @@
-
-
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariana — Portfólio</title>
+<title>Mariana Cassiano | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,730 +20,166 @@
   }
 
   html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
 
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-weight: 300;
-    overflow-x: hidden;
-
-  }
-
-
-
-  /* Hero stats row */
-  .hero-stats-row {
-    display: flex;
-    gap: 32px;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid var(--line);
-  }
+  .hero-stats-row { display: flex; gap: 32px; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
   .hero-stat { display: flex; flex-direction: column; gap: 2px; }
-  .hero-stat-num {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--ink);
-    line-height: 1;
-  }
-  .hero-stat-label {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
+  .hero-stat-num { font-family: var(--serif); font-size: 28px; font-weight: 400; color: var(--ink); line-height: 1; }
+  .hero-stat-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); }
 
-  /* Photo */
-  .hero-photo-wrap {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .hero-photo {
-    width: 340px;
-    height: 420px;
-    object-fit: cover;
-    object-position: center top;
-    display: block;
-    filter: grayscale(15%);
-    transition: filter 0.4s ease;
-  }
+  .hero-photo-wrap { position: relative; display: flex; justify-content: center; align-items: center; }
+  .hero-photo { width: 340px; height: 420px; object-fit: cover; object-position: center top; display: block; filter: grayscale(15%); transition: filter 0.4s ease; }
   .hero-photo:hover { filter: grayscale(0%); }
-  .hero-photo-frame {
-    position: relative;
-    display: inline-block;
-  }
-  .hero-photo-frame::before {
-    content: '';
-    position: absolute;
-    top: 16px; left: 16px; right: -16px; bottom: -16px;
-    border: 1px solid var(--accent-light);
-    z-index: -1;
-  }
+  .hero-photo-frame { position: relative; display: inline-block; }
+  .hero-photo-frame::before { content: ''; position: absolute; top: 16px; left: 16px; right: -16px; bottom: -16px; border: 1px solid var(--accent-light); z-index: -1; }
 
-  /* Navigation */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 28px 60px;
-    background: var(--cream);
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.4s ease;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 28px 60px; background: var(--cream); border-bottom: 1px solid transparent; transition: border-color 0.4s ease; }
   nav.scrolled { border-color: var(--line); }
-
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 20px;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  .nav-logo { font-family: var(--serif); font-size: 20px; font-weight: 300; letter-spacing: 0.05em; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 40px; list-style: none; }
+  .nav-links a { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
   .nav-links a:hover { color: var(--accent); }
 
-  /* Hero */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 120px 60px 60px;
-    gap: 60px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    right: -100px; top: 50%;
-    transform: translateY(-50%);
-    width: 500px; height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 120px 60px 60px; gap: 60px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; right: -100px; top: 50%; transform: translateY(-50%); width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%); opacity: 0.4; pointer-events: none; }
   .hero-text { animation: fadeUp 1s ease both; }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 40px; height: 1px;
-    background: var(--accent);
-  }
-
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(52px, 6vw, 88px);
-    font-weight: 300;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 32px;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-tagline {
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    max-width: 420px;
-    margin-bottom: 48px;
-  }
-
-  .hero-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--ink);
-    padding-bottom: 4px;
-    transition: gap 0.3s ease, color 0.2s;
-  }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--accent); }
+  .hero-name { font-family: var(--serif); font-size: clamp(52px, 6vw, 88px); font-weight: 300; line-height: 1.05; letter-spacing: -0.01em; margin-bottom: 32px; }
+  .hero-name em { font-style: italic; color: var(--accent); }
+  .hero-tagline { font-size: 16px; line-height: 1.7; color: var(--ink-soft); max-width: 420px; margin-bottom: 48px; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 12px; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 4px; transition: gap 0.3s ease, color 0.2s; }
   .hero-cta:hover { gap: 20px; color: var(--accent); border-color: var(--accent); }
 
-  .hero-stats {
-    animation: fadeUp 1s 0.2s ease both;
-  }
+  section { padding: 100px 60px; }
+  .section-header { display: flex; align-items: baseline; gap: 24px; margin-bottom: 64px; border-bottom: 1px solid var(--line); padding-bottom: 24px; }
+  .section-number { font-size: 11px; letter-spacing: 0.2em; color: var(--accent); font-family: var(--sans); }
+  .section-title { font-family: var(--serif); font-size: clamp(32px, 4vw, 52px); font-weight: 300; letter-spacing: -0.01em; }
 
-  .stat-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-  }
-
-  .stat-card {
-    background: white;
-    padding: 40px 32px;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  .stat-card:hover { transform: translateY(-4px); }
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  .stat-card:hover::before { transform: scaleX(1); }
-
-  .stat-number {
-    font-family: var(--serif);
-    font-size: 52px;
-    font-weight: 300;
-    line-height: 1;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-  .stat-label {
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-
-  /* Section base */
-  section {
-    padding: 100px 60px;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 24px;
-    margin-bottom: 64px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 24px;
-  }
-
-  .section-number {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--accent);
-    font-family: var(--sans);
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(32px, 4vw, 52px);
-    font-weight: 300;
-    letter-spacing: -0.01em;
-  }
-
-  /* Timeline / Experience */
   .experience { background: white; }
+  .timeline { display: grid; gap: 0; }
+  .timeline-item { display: grid; grid-template-columns: 200px 1px 1fr; gap: 0 40px; padding: 48px 0; border-bottom: 1px solid var(--line); opacity: 1; transition: opacity 0.6s ease, transform 0.6s ease; }
+  .timeline-period { font-size: 12px; letter-spacing: 0.05em; color: var(--accent); padding-top: 4px; text-align: right; }
+  .timeline-line { background: var(--line); position: relative; }
+  .timeline-line::before { content: ''; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .timeline-company { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 4px; }
+  .timeline-role { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .timeline-desc { font-size: 14px; line-height: 1.8; color: var(--ink-soft); max-width: 560px; }
+  .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .tag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--line); padding: 4px 12px; border-radius: 2px; }
 
-  .timeline {
-    display: grid;
-    gap: 0;
-  }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 200px 1px 1fr;
-    gap: 0 40px;
-    padding: 48px 0;
-    border-bottom: 1px solid var(--line);
-    opacity: 1;
-    transform: none;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .timeline-item.animate-out { opacity: 0; transform: translateY(20px); }
-  .timeline-item.visible { opacity: 1; transform: translateY(0); }
-
-  .timeline-period {
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    color: var(--accent);
-    padding-top: 4px;
-    text-align: right;
-  }
-
-  .timeline-line {
-    background: var(--line);
-    position: relative;
-  }
-  .timeline-line::before {
-    content: '';
-    position: absolute;
-    top: 8px; left: 50%;
-    transform: translateX(-50%);
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-
-  .timeline-content { padding-left: 0; }
-
-  .timeline-company {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 4px;
-  }
-
-  .timeline-role {
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  .timeline-desc {
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--ink-soft);
-    max-width: 560px;
-  }
-
-  .timeline-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .tag {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    border: 1px solid var(--line);
-    padding: 4px 12px;
-    border-radius: 2px;
-  }
-
-  /* Projects */
   .projects { background: var(--cream); }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .project-card {
-    background: white;
-    padding: 40px 32px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 1;
-  }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .project-card { background: white; padding: 40px 32px; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .project-card:hover { transform: translateY(-6px); z-index: 2; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+  .project-category { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+  .project-title { font-family: var(--serif); font-size: 24px; font-weight: 400; line-height: 1.2; margin-bottom: 16px; }
+  .project-desc { font-size: 13px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 24px; }
+  .project-result { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--accent); border-top: 1px solid var(--line); padding-top: 20px; }
+  .project-icon { position: absolute; top: 32px; right: 32px; font-size: 28px; opacity: 0.15; transition: opacity 0.3s, transform 0.3s; }
+  .project-card:hover .project-icon { opacity: 0.4; transform: scale(1.2) rotate(5deg); }
 
-  .project-category {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-  }
-
-  .project-title {
-    font-family: var(--serif);
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 16px;
-  }
-
-  .project-desc {
-    font-size: 13px;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    margin-bottom: 24px;
-  }
-
-  .project-result {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-style: italic;
-    color: var(--accent);
-    border-top: 1px solid var(--line);
-    padding-top: 20px;
-  }
-
-  .project-icon {
-    position: absolute;
-    top: 32px; right: 32px;
-    font-size: 28px;
-    opacity: 0.15;
-    transition: opacity 0.3s, transform 0.3s;
-  }
-  .project-card:hover .project-icon {
-    opacity: 0.4;
-    transform: scale(1.2) rotate(5deg);
-  }
-
-  /* Digital Projects */
-  .digital-projects {
-    background: var(--ink);
-    padding: 80px 60px;
-  }
+  .digital-projects { background: var(--ink); padding: 80px 60px; }
   .digital-projects .section-number { color: var(--accent); }
   .digital-projects .section-title { color: var(--cream); }
   .digital-projects .section-header { border-color: rgba(245,242,237,0.12); }
-  .digital-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    margin-top: 32px;
-  }
-  .digital-card {
-    position: relative;
-    background: rgba(245,242,237,0.04);
-    border: 1px solid rgba(196,133,90,0.2);
-    border-radius: 2px;
-    padding: 48px 40px;
-    overflow: hidden;
-    cursor: pointer;
-    transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s ease;
-  }
-  .digital-card:hover {
-    background: rgba(196,133,90,0.08);
-    border-color: var(--accent);
-    transform: translateY(-4px);
-  }
-  .digital-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-  }
+  .digital-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
+  .digital-card { position: relative; background: rgba(245,242,237,0.04); border: 1px solid rgba(196,133,90,0.2); border-radius: 2px; padding: 48px 40px; overflow: hidden; transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s ease; }
+  .digital-card:hover { background: rgba(196,133,90,0.08); border-color: var(--accent); transform: translateY(-4px); }
+  .digital-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity 0.35s ease; }
   .digital-card:hover::before { opacity: 1; }
-  .digital-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 9px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(196,133,90,0.35);
-    padding: 4px 12px;
-    border-radius: 2px;
-    margin-bottom: 28px;
-  }
-  .digital-badge::before {
-    content: '';
-    width: 5px; height: 5px;
-    background: var(--accent);
-    border-radius: 50%;
-    animation: dpulse 2s infinite;
-  }
-  @keyframes dpulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.7); }
-  }
-  .digital-title {
-    font-family: var(--serif);
-    font-size: 32px;
-    font-weight: 300;
-    color: var(--cream);
-    line-height: 1.15;
-    margin-bottom: 8px;
-  }
-  .digital-subtitle {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 20px;
-  }
-  .digital-desc {
-    font-size: 14px;
-    line-height: 1.8;
-    color: rgba(245,242,237,0.6);
-    margin-bottom: 32px;
-  }
-  .digital-features {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 32px;
-  }
-  .digital-feature {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(245,242,237,0.5);
-    border: 1px solid rgba(245,242,237,0.12);
-    padding: 5px 12px;
-    border-radius: 2px;
-    transition: color 0.25s, border-color 0.25s;
-  }
-  .digital-card:hover .digital-feature {
-    color: rgba(196,133,90,0.85);
-    border-color: rgba(196,133,90,0.3);
-  }
-  .digital-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(196,133,90,0.35);
-    padding-bottom: 3px;
-    transition: gap 0.3s, border-color 0.3s;
-    background: none;
-    border-left: none; border-right: none; border-top: none;
-    cursor: pointer;
-  }
-  .digital-cta:hover { gap: 16px; border-bottom-color: var(--accent); }
-  .digital-icon-bg {
-    position: absolute;
-    right: -20px; bottom: -20px;
-    font-size: 120px;
-    opacity: 0.04;
-    transition: opacity 0.35s, transform 0.35s;
-    pointer-events: none;
-    line-height: 1;
-  }
+  .digital-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(196,133,90,0.35); padding: 4px 12px; border-radius: 2px; margin-bottom: 28px; }
+  .digital-badge::before { content: ''; width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: dpulse 2s infinite; }
+  @keyframes dpulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.7); } }
+  .digital-title { font-family: var(--serif); font-size: 32px; font-weight: 300; color: var(--cream); line-height: 1.15; margin-bottom: 8px; }
+  .digital-subtitle { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+  .digital-desc { font-size: 14px; line-height: 1.8; color: rgba(245,242,237,0.6); margin-bottom: 32px; }
+  .digital-features { display: flex; flex-wrap: wrap; gap: 8px; }
+  .digital-feature { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,242,237,0.5); border: 1px solid rgba(245,242,237,0.12); padding: 5px 12px; border-radius: 2px; transition: color 0.25s, border-color 0.25s; }
+  .digital-card:hover .digital-feature { color: rgba(196,133,90,0.85); border-color: rgba(196,133,90,0.3); }
+  .digital-icon-bg { position: absolute; right: -20px; bottom: -20px; font-size: 120px; opacity: 0.04; transition: opacity 0.35s, transform 0.35s; pointer-events: none; line-height: 1; }
   .digital-card:hover .digital-icon-bg { opacity: 0.07; transform: scale(1.1) rotate(-5deg); }
 
-  /* Awards */
   .awards { background: var(--ink); color: var(--cream); }
   .awards .section-title { color: var(--cream); }
   .awards .section-number { color: var(--accent); }
   .awards .section-header { border-color: rgba(245,242,237,0.15); }
+  .award-item { display: flex; align-items: center; gap: 48px; padding: 48px 0; border-bottom: 1px solid rgba(245,242,237,0.1); }
+  .award-icon-wrap { width: 80px; height: 80px; border: 1px solid rgba(196,133,90,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; flex-shrink: 0; }
+  .award-year { font-size: 11px; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 8px; }
+  .award-title { font-family: var(--serif); font-size: 28px; font-weight: 300; margin-bottom: 8px; }
+  .award-desc { font-size: 14px; line-height: 1.7; color: rgba(245,242,237,0.6); }
 
-  .award-item {
-    display: flex;
-    align-items: center;
-    gap: 48px;
-    padding: 48px 0;
-    border-bottom: 1px solid rgba(245,242,237,0.1);
-    opacity: 1;
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-
-  .award-icon-wrap {
-    width: 80px; height: 80px;
-    border: 1px solid rgba(196,133,90,0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    flex-shrink: 0;
-  }
-
-  .award-year {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-
-  .award-title {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 300;
-    margin-bottom: 8px;
-  }
-
-  .award-desc {
-    font-size: 14px;
-    line-height: 1.7;
-    color: rgba(245,242,237,0.6);
-  }
-
-  /* Skills */
   .skills-section { background: white; }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
-  }
-
-  .skill-group {
-    padding: 40px 32px;
-    background: var(--cream);
-    opacity: 1;
-    transition: opacity 0.6s ease;
-  }
-
-  .skill-group-title {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-  }
-
-  .skill-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .skill-list li {
-    font-family: var(--sans);
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--ink-soft);
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    line-height: 1.5;
-  }
-  .skill-list li::before {
-    content: '';
-    display: block;
-    width: 4px; height: 4px;
-    background: var(--accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-    margin-top: 6px;
-  }
-
-  /* Course list */
-  .course-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  .course-list li {
-    display: flex;
-    flex-direction: column;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+  .skill-group { padding: 40px 32px; background: var(--cream); }
+  .skill-group-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .skill-list li { font-size: 14px; font-weight: 400; color: var(--ink-soft); display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+  .skill-list li::before { content: ''; display: block; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .course-list { list-style: none; display: flex; flex-direction: column; }
+  .course-list li { display: flex; flex-direction: column; padding: 12px 0; border-bottom: 1px solid var(--line); }
   .course-list li:last-child { border-bottom: none; }
-  .course-name {
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--ink-soft);
-    line-height: 1.4;
-    margin-bottom: 3px;
-  }
-  .course-meta {
-    font-size: 11px;
-    letter-spacing: 0.05em;
-    color: var(--accent);
-    font-family: var(--sans);
-  }
+  .course-name { font-size: 13px; font-weight: 400; color: var(--ink-soft); line-height: 1.4; margin-bottom: 3px; }
+  .course-meta { font-size: 11px; letter-spacing: 0.05em; color: var(--accent); }
 
-  /* Contact */
-  .contact {
-    background: var(--cream);
-    text-align: center;
-    padding: 120px 60px;
-  }
-
-  .contact-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-  }
-
-  .contact-headline {
-    font-family: var(--serif);
-    font-size: clamp(40px, 6vw, 80px);
-    font-weight: 300;
-    line-height: 1.1;
-    margin-bottom: 48px;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
-  }
-
-  .contact-link {
-    font-size: 13px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 4px;
-    transition: color 0.2s, border-color 0.2s, gap 0.3s;
-  }
+  .contact { background: var(--cream); text-align: center; padding: 120px 60px; }
+  .contact-eyebrow { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 24px; }
+  .contact-headline { font-family: var(--serif); font-size: clamp(40px, 6vw, 80px); font-weight: 300; line-height: 1.1; margin-bottom: 48px; }
+  .contact-links { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .contact-link { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 4px; transition: color 0.2s, border-color 0.2s, gap 0.3s; }
   .contact-link:hover { color: var(--accent); border-color: var(--accent); gap: 16px; }
 
-  /* Footer */
-  footer {
-    background: var(--ink);
-    color: rgba(245,242,237,0.4);
-    text-align: center;
-    padding: 32px;
-    font-size: 12px;
-    letter-spacing: 0.05em;
-  }
+  footer { background: var(--ink); color: rgba(245,242,237,0.4); text-align: center; padding: 32px; font-size: 12px; letter-spacing: 0.05em; }
 
-  /* Animations */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* Responsive */
+  /* Modal */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(26,24,20,0.85); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
+  .modal-overlay.active { display: flex; }
+  .modal-content { background: white; max-width: 680px; width: 90%; padding: 48px; position: relative; max-height: 85vh; overflow-y: auto; }
+  .modal-close { position: absolute; top: 20px; right: 24px; font-size: 24px; cursor: pointer; color: var(--ink-soft); background: none; border: none; line-height: 1; }
+  .modal-title { font-family: var(--serif); font-size: 32px; font-weight: 300; margin-bottom: 16px; }
+  .modal-body { font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+
+  /* Gallery */
+  .gallery-section { background: white; padding: 80px 60px; }
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .gallery-item { position: relative; overflow: hidden; cursor: pointer; aspect-ratio: 1/1; background: var(--ink); }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease, filter 0.4s ease; filter: grayscale(20%); }
+  .gallery-item:hover img { transform: scale(1.06); filter: grayscale(0%); }
+  .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(26,24,20,0.75)); color: white; font-size: 11px; letter-spacing: 0.06em; padding: 24px 14px 12px; opacity: 0; transition: opacity 0.3s ease; }
+  .gallery-item:hover .gallery-caption { opacity: 1; }
+
+  /* Lightbox */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(10,8,6,0.97); z-index: 2000; align-items: center; justify-content: center; flex-direction: column; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 92vw; max-height: 88vh; width: auto; height: auto; object-fit: contain; display: block; }
+  .lightbox-caption { color: rgba(245,242,237,0.6); font-size: 12px; letter-spacing: 0.1em; margin-top: 16px; }
+  .lightbox-close { position: absolute; top: 24px; right: 32px; color: white; font-size: 28px; background: none; border: none; cursor: pointer; opacity: 0.7; line-height: 1; z-index: 10; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 36px; cursor: pointer; opacity: 0.5; padding: 16px; transition: opacity 0.2s; z-index: 10; }
+  .lightbox-nav:hover { opacity: 1; }
+  .lightbox-prev { left: 16px; }
+  .lightbox-next { right: 16px; }
+
+  /* Personal */
+  .personal-section { background: var(--ink); padding: 100px 60px; }
+  .personal-section .section-title { color: var(--cream); }
+  .personal-section .section-number { color: var(--accent); }
+  .personal-section .section-header { border-color: rgba(245,242,237,0.12); }
+  .personal-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start; }
+  .personal-cards { display: flex; flex-direction: column; gap: 2px; }
+  .personal-card { display: flex; gap: 20px; align-items: flex-start; padding: 28px 24px; background: rgba(245,242,237,0.04); border-left: 2px solid transparent; transition: border-color 0.3s, background 0.3s; }
+  .personal-card:hover { border-color: var(--accent); background: rgba(196,133,90,0.06); }
+  .personal-card-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .personal-card-title { font-family: var(--serif); font-size: 18px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
+  .personal-card-text { font-size: 13px; line-height: 1.7; color: rgba(245,242,237,0.55); }
+  .personal-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .personal-photo { overflow: hidden; cursor: pointer; background: rgba(245,242,237,0.05); aspect-ratio: 1/1; }
+  .personal-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s ease, filter 0.4s ease; filter: grayscale(30%); }
+  .personal-photo:hover img { transform: scale(1.06); filter: grayscale(0%); }
+
   @media (max-width: 900px) {
     nav { padding: 20px 24px; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
@@ -759,271 +192,21 @@
     .projects-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr 1fr; }
     .award-item { flex-direction: column; align-items: flex-start; gap: 24px; }
-    .stat-grid { gap: 2px; }
-  }
-
-  /* Video modal */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(26,24,20,0.85);
-    z-index: 1000;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-  }
-  .modal-overlay.active { display: flex; }
-  .modal-content {
-    background: white;
-    max-width: 680px;
-    width: 90%;
-    padding: 48px;
-    position: relative;
-  }
-  .modal-close {
-    position: absolute;
-    top: 20px; right: 24px;
-    font-size: 24px;
-    cursor: pointer;
-    color: var(--ink-soft);
-    background: none; border: none;
-    line-height: 1;
-  }
-  .modal-title {
-    font-family: var(--serif);
-    font-size: 32px;
-    font-weight: 300;
-    margin-bottom: 16px;
-  }
-  .modal-body {
-    font-size: 14px;
-    line-height: 1.8;
-    color: var(--ink-soft);
-  }
-
-  /* Placeholders for media */
-  .media-placeholder {
-    background: var(--cream);
-    border: 1px dashed var(--line);
-    border-radius: 2px;
-    padding: 32px;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-    color: var(--ink-soft);
-    letter-spacing: 0.05em;
-  }
-  .media-placeholder span { display: block; font-size: 28px; margin-bottom: 8px; }
-
-  /* Gallery */
-  .gallery-section {
-    background: white;
-    padding: 80px 60px;
-  }
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-  .gallery-item {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    aspect-ratio: 1 / 1;
-    background: var(--ink);
-  }
-  .gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    transition: transform 0.5s ease, filter 0.4s ease;
-    filter: grayscale(20%);
-  }
-  .gallery-item:hover img {
-    transform: scale(1.06);
-    filter: grayscale(0%);
-  }
-  .gallery-caption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(26,24,20,0.75));
-    color: white;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    padding: 24px 14px 12px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    font-family: var(--sans);
-  }
-  .gallery-item:hover .gallery-caption { opacity: 1; }
-
-  /* Lightbox */
-  .lightbox {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,8,6,0.97);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .lightbox.active { display: flex; }
-  .lightbox img {
-    max-width: 92vw;
-    max-height: 88vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-  }
-  .lightbox-caption {
-    color: rgba(245,242,237,0.6);
-    font-size: 12px;
-    letter-spacing: 0.1em;
-    margin-top: 16px;
-    font-family: var(--sans);
-  }
-  .lightbox-close {
-    position: absolute;
-    top: 24px; right: 32px;
-    color: white; font-size: 28px;
-    background: none; border: none;
-    cursor: pointer; opacity: 0.7;
-    line-height: 1;
-  }
-  .lightbox-close:hover { opacity: 1; }
-  .lightbox-nav {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    background: none; border: none;
-    color: white; font-size: 36px;
-    cursor: pointer; opacity: 0.5;
-    padding: 16px;
-    transition: opacity 0.2s;
-  }
-  .lightbox-nav:hover { opacity: 1; }
-  .lightbox-prev { left: 16px; }
-  .lightbox-next { right: 16px; }
-
-
-  /* Personal section */
-  .personal-section {
-    background: var(--ink);
-    padding: 100px 60px;
-  }
-  .personal-section .section-title { color: var(--cream); }
-  .personal-section .section-number { color: var(--accent); }
-  .personal-section .section-header { border-color: rgba(245,242,237,0.12); }
-
-  .personal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 60px;
-    align-items: start;
-  }
-
-  .personal-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .personal-card {
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-    padding: 28px 24px;
-    background: rgba(245,242,237,0.04);
-    border-left: 2px solid transparent;
-    transition: border-color 0.3s, background 0.3s;
-  }
-  .personal-card:hover {
-    border-color: var(--accent);
-    background: rgba(196,133,90,0.06);
-  }
-
-  .personal-card-icon {
-    font-size: 24px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .personal-card-title {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 6px;
-  }
-
-  .personal-card-text {
-    font-size: 13px;
-    line-height: 1.7;
-    color: rgba(245,242,237,0.55);
-  }
-
-  /* Personal photo grid */
-  .personal-photo-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
-
-  .personal-photo {
-    overflow: hidden;
-    cursor: pointer;
-    background: rgba(245,242,237,0.05);
-    aspect-ratio: 1 / 1;
-  }
-  .personal-photo.tall {
-    grid-row: unset;
-    aspect-ratio: 1 / 1;
-  }
-  .personal-photo.wide {
-    grid-column: unset;
-    aspect-ratio: 1 / 1;
-  }
-
-  .personal-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
-    transition: transform 0.5s ease, filter 0.4s ease;
-    filter: grayscale(30%);
-  }
-  .personal-photo:hover img {
-    transform: scale(1.06);
-    filter: grayscale(0%);
-  }
-
-  @media (max-width: 900px) {
     .personal-grid { grid-template-columns: 1fr; }
     .personal-section { padding: 64px 24px; }
+    .gallery-section { padding: 64px 24px; }
+    .digital-projects { padding: 64px 24px; }
   }
-
-
-  /* Video modal */
-
-
-
-
 </style>
 </head>
 <body>
 
-
-
-
-<!-- Nav -->
 <nav id="navbar">
   <a href="#" class="nav-logo">Mariana Cassiano</a>
   <ul class="nav-links">
     <li><a href="#experiencia">Experiência</a></li>
     <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#projetos-digitais">Ferramentas</a></li>
+    <li><a href="#projetos-digitais">Ferramentas</a></li>
     <li><a href="#premios">Prêmios</a></li>
     <li><a href="#contato">Contato</a></li>
   </ul>
@@ -1033,14 +216,9 @@
 <section class="hero">
   <div class="hero-text">
     <p class="hero-eyebrow">Portfólio · Marketing & Eventos</p>
-    <h1 class="hero-name">
-      Mariana<br><em>Cassiano</em>
-    </h1>
-    <p class="hero-tagline">
-      Mais de 7 anos conectando estratégia, eventos e resultado. Da grande mídia ao mercado corporativo — do planejamento à experiência presencial.
-    </p>
+    <h1 class="hero-name">Mariana<br><em>Cassiano</em></h1>
+    <p class="hero-tagline">Do branding ao CRM, do evento presencial à campanha digital, com mais de 7 anos integrando todas as frentes do marketing. Não sou especialista em uma única disciplina: sou a profissional que conecta todas elas.</p>
     <a href="#projetos" class="hero-cta">Ver projetos →</a>
-
     <div class="hero-stats-row">
       <div class="hero-stat"><span class="hero-stat-num">7+</span><span class="hero-stat-label">anos</span></div>
       <div class="hero-stat"><span class="hero-stat-num">4×</span><span class="hero-stat-label">BBB/ES</span></div>
@@ -1048,7 +226,6 @@
       <div class="hero-stat"><span class="hero-stat-num">360°</span><span class="hero-stat-label">marketing</span></div>
     </div>
   </div>
-
   <div class="hero-photo-wrap">
     <div class="hero-photo-frame">
       <img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_1.png" class="hero-photo" alt="Mariana Cassiano">
@@ -1065,52 +242,74 @@
   <div class="timeline">
 
     <div class="timeline-item" data-reveal>
-      <div class="timeline-period">2023 — 2024</div>
+      <div class="timeline-period">nov 2025 — presente</div>
       <div class="timeline-line"></div>
       <div class="timeline-content">
         <div class="timeline-company">Fotus Distribuidora Solar</div>
-        <div class="timeline-role">Analista de Marketing</div>
-        <div class="timeline-desc">
-          Planejamento estratégico anual, estruturação de CRM, análise de métricas, gestão de campanhas e produção de conteúdo para o setor de energia solar.
-        </div>
+        <div class="timeline-role">Analista de CRM Pleno</div>
+        <div class="timeline-desc">Responsável pela estruturação e evolução do ecossistema de CRM da empresa. Desenvolvo fluxos de automação, segmentação de base e réguas de relacionamento para os setores solar e agro, conectando dados com narrativa de marca. Atuo de forma integrada com as áreas comercial e de marketing para garantir que cada ponto de contato com o cliente seja consistente, relevante e orientado a resultado.</div>
         <div class="timeline-tags">
-          <span class="tag">Marketing 360°</span>
-          <span class="tag">CRM</span>
-          <span class="tag">RD Station</span>
-          <span class="tag">Inbound</span>
-          <span class="tag">B2B</span>
+          <span class="tag">CRM</span><span class="tag">Automação</span><span class="tag">Segmentação</span><span class="tag">Solar & Agro</span><span class="tag">B2B</span>
         </div>
       </div>
     </div>
 
     <div class="timeline-item" data-reveal>
-      <div class="timeline-period">2018 — 2023</div>
+      <div class="timeline-period">fev 2025 — jan 2026</div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <div class="timeline-company">Fotus Distribuidora Solar</div>
+        <div class="timeline-role">Analista de Planejamento de Marketing</div>
+        <div class="timeline-desc">Responsável pelo estudo de mercado e pela construção do mote e da campanha anual da Fotus, apresentada na Intersolar South America, a maior feira e congresso de energia solar da América Latina. Desenvolvi o planejamento estratégico da jornada do cliente para o evento, criando a narrativa que posicionou a marca diante de expositores, investidores e especialistas do setor de todo o Brasil e do exterior.</div>
+        <div class="timeline-tags">
+          <span class="tag">Planejamento Estratégico</span><span class="tag">Jornada do Cliente</span><span class="tag">Intersolar</span><span class="tag">B2B</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item" data-reveal>
+      <div class="timeline-period">jan 2023 — jan 2025</div>
       <div class="timeline-line"></div>
       <div class="timeline-content">
         <div class="timeline-company">Rede Gazeta (Afiliada TV Globo)</div>
         <div class="timeline-role">Analista de Marketing</div>
-        <div class="timeline-desc">
-          Gestão de campanhas, produção de eventos, criação de identidade visual, análise de dados e desenvolvimento de projetos especiais para a maior empresa de comunicação do Espírito Santo.
-        </div>
+        <div class="timeline-desc">Vencedora do Prêmio Aberje Regional 2023 com a campanha "Informação de Verdade". Liderou por 4 anos consecutivos a ativação do confessionário do BBB no Espírito Santo. Coordenou ativações de novelas da TV Globo no estado, integrando experiência de marca, produção de eventos e comunicação digital. Atuou em planejamento de campanhas, gestão de eventos de diferentes portes, criação de conteúdo digital e interface com clientes, agências e fornecedores.</div>
         <div class="timeline-tags">
-          <span class="tag">Eventos</span>
-          <span class="tag">Branding</span>
-          <span class="tag">Campanhas</span>
-          <span class="tag">Mídia</span>
-          <span class="tag">B2C</span>
+          <span class="tag">Eventos</span><span class="tag">Branding</span><span class="tag">Campanhas</span><span class="tag">Mídia</span><span class="tag">B2C</span>
         </div>
       </div>
     </div>
 
     <div class="timeline-item" data-reveal>
-      <div class="timeline-period">2017 — 2018</div>
+      <div class="timeline-period">set 2019 — jan 2023</div>
       <div class="timeline-line"></div>
       <div class="timeline-content">
-        <div class="timeline-company">Agência Chuva</div>
-        <div class="timeline-role">Atendimento Publicitário</div>
-        <div class="timeline-desc">
-          Interface entre clientes e equipe, com foco em planejamento, gestão de projetos, briefing, cronograma e aprovações.
+        <div class="timeline-company">Rede Gazeta (Afiliada TV Globo)</div>
+        <div class="timeline-role">Assistente de Marketing</div>
+        <div class="timeline-desc">Desenvolvimento de planejamentos de comunicação, criação de campanhas publicitárias, produção de criativos para canais on e offline, aprovação de conceito e interface com clientes, agências e fornecedores.</div>
+        <div class="timeline-tags">
+          <span class="tag">Comunicação</span><span class="tag">Criativos</span><span class="tag">Campanhas</span>
         </div>
+      </div>
+    </div>
+
+    <div class="timeline-item" data-reveal>
+      <div class="timeline-period">dez 2018 — set 2019</div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <div class="timeline-company">Rede Gazeta (Afiliada TV Globo)</div>
+        <div class="timeline-role">Estagiária de Criação</div>
+        <div class="timeline-desc">Criação de conteúdo para redes sociais, desenvolvimento de artes para comunicação on/off e produção de apresentações de conteúdo.</div>
+      </div>
+    </div>
+
+    <div class="timeline-item" data-reveal>
+      <div class="timeline-period">ago 2017 — dez 2018</div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <div class="timeline-company">Folha Vitória</div>
+        <div class="timeline-role">Estagiária</div>
+        <div class="timeline-desc">Suporte em direção de arte, produção de material publicitário para web e apoio junto à área comercial.</div>
       </div>
     </div>
 
@@ -1124,7 +323,6 @@
     <h2 class="section-title">Projetos</h2>
   </div>
   <div class="projects-grid">
-
     <div class="project-card" data-reveal onclick="openModal('bbb')">
       <div class="project-category">Eventos · TV Globo</div>
       <div class="project-title">Confessionário BBB</div>
@@ -1132,7 +330,6 @@
       <div class="project-result">Reconhecimento interno e base para o Prêmio Aberje 2023.</div>
       <div class="project-icon">🎙️</div>
     </div>
-
     <div class="project-card" data-reveal onclick="openModal('aberje')">
       <div class="project-category">Campanha Institucional</div>
       <div class="project-title">Informação de Verdade</div>
@@ -1140,15 +337,13 @@
       <div class="project-result">🏆 Vencedora do Prêmio Aberje Regional 2023.</div>
       <div class="project-icon">📰</div>
     </div>
-
     <div class="project-card" data-reveal onclick="openModal('intersolar')">
       <div class="project-category">Estratégia B2B</div>
-      <div class="project-title">Planejamento Anual Fotus</div>
-      <div class="project-desc">Criação do planejamento estratégico anual para a maior feira de energia solar da América Latina.</div>
-      <div class="project-result">Aprendizado acelerado e entrega de alto nível em setor técnico.</div>
+      <div class="project-title">Campanha Anual Fotus</div>
+      <div class="project-desc">Criação do mote e campanha anual apresentada na Intersolar South America, a maior feira de energia solar da América Latina.</div>
+      <div class="project-result">Narrativa posicionada diante de expositores e investidores nacionais e internacionais.</div>
       <div class="project-icon">☀️</div>
     </div>
-
     <div class="project-card" data-reveal onclick="openModal('novelas')">
       <div class="project-category">Eventos · TV Globo</div>
       <div class="project-title">Ativações de Novelas</div>
@@ -1156,15 +351,13 @@
       <div class="project-result">Projetos de alto impacto e visibilidade para o público capixaba.</div>
       <div class="project-icon">📺</div>
     </div>
-
     <div class="project-card" data-reveal onclick="openModal('crm')">
       <div class="project-category">CRM & Dados</div>
       <div class="project-title">Estruturação de CRM</div>
-      <div class="project-desc">Mapeamento da jornada do cliente, configuração de fluxos, treinamento de equipe e análise de métricas na Fotus.</div>
-      <div class="project-result">Transição interna que refletiu reconhecimento por performance.</div>
+      <div class="project-desc">Fluxos de automação, réguas de relacionamento e segmentação de base para os setores solar e agro na Fotus.</div>
+      <div class="project-result">Ecossistema de CRM estruturado do zero, integrando dados com narrativa de marca.</div>
       <div class="project-icon">📊</div>
     </div>
-
     <div class="project-card" data-reveal onclick="openModal('branding')">
       <div class="project-category">Branding</div>
       <div class="project-title">Construção de Marca</div>
@@ -1172,7 +365,6 @@
       <div class="project-result">Naming, conceito, logotipo, manual de marca e guidelines.</div>
       <div class="project-icon">🎨</div>
     </div>
-
   </div>
 </section>
 
@@ -1183,28 +375,25 @@
     <h2 class="section-title">Galeria</h2>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item" onclick="openGallery('bbb1')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_8.jpg"><div class="gallery-caption">Confessionário BBB — influenciadores</div></div>
-    <div class="gallery-item" onclick="openGallery('bbb2')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_9.jpg"><div class="gallery-caption">Confessionário BBB 22 — Shopping Vitória</div></div>
-    <div class="gallery-item" onclick="openGallery('bbb3')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_10.jpg"><div class="gallery-caption">Confessionário BBB — estrutura</div></div>
-    <div class="gallery-item" onclick="openGallery('wa2')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_11.jpg"><div class="gallery-caption">Jornal do Campo — evento</div></div>
-    <div class="gallery-item" onclick="openGallery('wa3')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_12.jpg"><div class="gallery-caption">Ativação BBB — mascote</div></div>
-    <div class="gallery-item" onclick="openGallery('wa4')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_13.jpg"><div class="gallery-caption">Ativação BBB — robô</div></div>
-    <div class="gallery-item" onclick="openGallery('wa5')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_14.jpg"><div class="gallery-caption">Ativação TV Globo — cenário</div></div>
-    <div class="gallery-item" onclick="openGallery('wa6')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_15.jpg"><div class="gallery-caption">BBB — confessionário bastidores</div></div>
-    
+    <div class="gallery-item" onclick="openLightbox('prof',0)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_8.jpg"><div class="gallery-caption">Confessionário BBB — influenciadores</div></div>
+    <div class="gallery-item" onclick="openLightbox('prof',1)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_9.jpg"><div class="gallery-caption">Confessionário BBB 22 — Shopping Vitória</div></div>
+    <div class="gallery-item" onclick="openLightbox('prof',2)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_10.jpg"><div class="gallery-caption">Confessionário BBB — estrutura</div></div>
+    <div class="gallery-item" onclick="openLightbox('prof',3)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_11.jpg"><div class="gallery-caption">Jornal do Campo — evento</div></div>
+    <div class="gallery-item" onclick="openLightbox('prof',4)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_12.jpg"><div class="gallery-caption">Ativação BBB — mascote</div></div>
+    <div class="gallery-item" onclick="openLightbox('prof',5)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_13.jpg"><div class="gallery-caption">Ativação BBB — robô</div></div>
+    <div class="gallery-item" onclick="openLightbox('prof',6)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_14.jpg"><div class="gallery-caption">Ativação TV Globo — cenário</div></div>
+    <div class="gallery-item" onclick="openLightbox('prof',7)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_15.jpg"><div class="gallery-caption">BBB — confessionário bastidores</div></div>
   </div>
 </section>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('active');document.body.style.overflow = '';">✕</button>
-  <button class="lightbox-nav lightbox-prev" onclick="navGallery('prev')">←</button>
-  <img id="lightbox-img" src="">
-  <div id="lightbox-caption"></div>
-  <button class="lightbox-nav lightbox-next" onclick="navGallery('next')">→</button>
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">←</button>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-caption" class="lightbox-caption"></div>
+  <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">→</button>
 </div>
-
-
 
 <!-- Personal -->
 <section class="personal-section" id="pessoal">
@@ -1229,6 +418,20 @@
         </div>
       </div>
       <div class="personal-card" data-reveal>
+        <div class="personal-card-icon">👨‍👩‍👧‍👦</div>
+        <div>
+          <div class="personal-card-title">Minha família é meu hobby</div>
+          <div class="personal-card-text">Meu hobby preferido é simplesmente estar com minha mãe, meu pai e meu irmão. As conversas abertas com a minha mãe, as brincadeiras sem noção do meu pai e explorar todos os esportes com meu irmão. Nao tem coisa melhor.</div>
+        </div>
+      </div>
+      <div class="personal-card" data-reveal>
+        <div class="personal-card-icon">🐱</div>
+        <div>
+          <div class="personal-card-title">Lord, o guerreiro</div>
+          <div class="personal-card-text">Amor incondicional pelo Lord, um gatinho hidrocefálico que venceu todas as expectativas dos veterinários e hoje completa 7 anos. Ele é prova viva de que força e carinho fazem milagres.</div>
+        </div>
+      </div>
+      <div class="personal-card" data-reveal>
         <div class="personal-card-icon">💡</div>
         <div>
           <div class="personal-card-title">Curiosidade & Aprendizado</div>
@@ -1237,31 +440,28 @@
       </div>
     </div>
     <div class="personal-photo-grid">
-      <div class="personal-photo" onclick="openGallery2('p1')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_2.jpg"></div>
-      <div class="personal-photo tall" onclick="openGallery2('p2')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_4.jpg"></div>
-      <div class="personal-photo" onclick="openGallery2('p3')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_6.jpg"></div>
-      <div class="personal-photo wide" onclick="openGallery2('p4')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_7.jpg"></div>
-      <div class="personal-photo" onclick="openGallery2('p5')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_3.jpg"></div>
-      <div class="personal-photo" onclick="openGallery2('p6')"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_5.jpg"></div>
+      <div class="personal-photo" onclick="openLightbox('personal',0)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_2.jpg" alt="Na praia"></div>
+      <div class="personal-photo" onclick="openLightbox('personal',1)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_4.jpg" alt="Com Vitória"></div>
+      <div class="personal-photo" onclick="openLightbox('personal',2)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_6.jpg" alt="Noivado"></div>
+      <div class="personal-photo" onclick="openLightbox('personal',3)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_7.jpg" alt="Com Vitória"></div>
+      <div class="personal-photo" onclick="openLightbox('personal',4)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_3.jpg" alt="Flamengo"></div>
+      <div class="personal-photo" onclick="openLightbox('personal',5)"><img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_5.jpg" alt="Família Flamengo"></div>
     </div>
   </div>
 </section>
 
-<!-- Digital Projects -->
+<!-- Ferramentas -->
 <section class="digital-projects" id="projetos-digitais">
   <div class="section-header">
     <span class="section-number">05</span>
-    <h2 class="section-title">Ferramentas & Side Projects</h2>
+    <h2 class="section-title">Ferramentas</h2>
   </div>
   <div class="digital-grid">
-
     <div class="digital-card" data-reveal>
       <div class="digital-badge">Side Project</div>
       <div class="digital-title">Fotus Planner</div>
       <div class="digital-subtitle">Planejamento · Conteúdo · IA</div>
-      <div class="digital-desc">
-        Sistema de planejamento de marketing construído do zero para a Fotus. Substituiu a gestão em planilhas e centralizou todo o planejamento editorial em uma única interface web, com integração de IA para auxiliar na criação de copy.
-      </div>
+      <div class="digital-desc">Sistema de planejamento de marketing construído do zero para a Fotus. Substituiu a gestão em planilhas e centralizou todo o planejamento editorial em uma única interface web, com integração de IA para auxiliar na criação de copy.</div>
       <div class="digital-features">
         <span class="digital-feature">Planejador de Conteúdo</span>
         <span class="digital-feature">Banco de Ideias</span>
@@ -1269,17 +469,13 @@
         <span class="digital-feature">Integração com IA</span>
         <span class="digital-feature">Briefing Automatizado</span>
       </div>
-      <button class="digital-cta" onclick="event.stopPropagation();openDigitalModal('planner')">Ver detalhes →</button>
       <div class="digital-icon-bg">🗓️</div>
     </div>
-
     <div class="digital-card" data-reveal>
       <div class="digital-badge">Side Project</div>
       <div class="digital-title">OneBase</div>
       <div class="digital-subtitle">CRM · Dados · Segmentação</div>
-      <div class="digital-desc">
-        Plataforma interna de gestão de base de dados para a equipe comercial da Fotus. Import de planilhas, deduplicação por CNPJ, filtros avançados, listas segmentadas e exportação — com controle de acesso por perfil.
-      </div>
+      <div class="digital-desc">Plataforma interna de gestão de base de dados para a equipe comercial da Fotus. Import de planilhas, deduplicação por CNPJ, filtros avançados, listas segmentadas e exportação, com controle de acesso por perfil.</div>
       <div class="digital-features">
         <span class="digital-feature">Import CSV/XLSX</span>
         <span class="digital-feature">Deduplicação</span>
@@ -1288,20 +484,10 @@
         <span class="digital-feature">Exportação</span>
         <span class="digital-feature">Controle de acesso</span>
       </div>
-      <button class="digital-cta" onclick="event.stopPropagation();openDigitalModal('onebase')">Ver detalhes →</button>
       <div class="digital-icon-bg">🗄️</div>
     </div>
-
   </div>
 </section>
-
-<!-- Digital Modal -->
-<div id="digitalModal" onclick="if(event.target===this)closeDigitalModal()" style="display:none;position:fixed;inset:0;background:rgba(26,24,20,0.85);z-index:1000;align-items:center;justify-content:center;padding:40px 20px;">
-  <div style="background:var(--cream);max-width:620px;width:100%;padding:48px;position:relative;max-height:85vh;overflow-y:auto;border-radius:2px;">
-    <button onclick="closeDigitalModal()" style="position:absolute;top:20px;right:24px;background:none;border:none;font-size:20px;cursor:pointer;">✕</button>
-    <div id="digital-modal-body"></div>
-  </div>
-</div>
 
 <!-- Awards -->
 <section class="awards" id="premios">
@@ -1309,16 +495,14 @@
     <span class="section-number">06</span>
     <h2 class="section-title">Reconhecimentos</h2>
   </div>
-
   <div class="award-item" data-reveal>
     <div class="award-icon-wrap">🏆</div>
     <div>
       <div class="award-year">2023</div>
       <div class="award-title">Prêmio Aberje Regional</div>
-      <div class="award-desc">Melhor campanha institucional pela campanha "Informação de Verdade" — estratégia de combate às fake news em período eleitoral desenvolvida na Rede Gazeta (afiliada TV Globo). O Aberje é o maior prêmio de comunicação empresarial do Brasil.</div>
+      <div class="award-desc">Melhor campanha institucional pela campanha "Informação de Verdade", uma estratégia de combate às fake news em período eleitoral desenvolvida na Rede Gazeta (afiliada TV Globo). O Aberje é o maior prêmio de comunicação empresarial do Brasil.</div>
     </div>
   </div>
-
   <div class="award-item" data-reveal>
     <div class="award-icon-wrap">📜</div>
     <div>
@@ -1327,13 +511,12 @@
       <div class="award-desc">Certificação técnica em Microsoft Excel nível avançado, ampliando capacidade de análise de dados, construção de dashboards e relatórios de performance para tomada de decisão em marketing.</div>
     </div>
   </div>
-
   <div class="award-item" data-reveal>
     <div class="award-icon-wrap">🎓</div>
     <div>
       <div class="award-year">Pós-Graduação</div>
       <div class="award-title">Gestão de Eventos</div>
-      <div class="award-desc">Especialização que complementa a graduação em Publicidade e Propaganda, formando base teórica e prática para gestão completa de eventos corporativos, culturais e de grande porte.</div>
+      <div class="award-desc">Especialização pela Universidade Anhanguera (2024–2025), complementando a graduação em Publicidade e Propaganda pela Estácio (2015–2019) com base teórica e prática para gestão completa de eventos corporativos e de grande porte.</div>
     </div>
   </div>
 </section>
@@ -1362,6 +545,7 @@
         <li>CRM & Jornada do Cliente</li>
         <li>Automações de Marketing</li>
         <li>RD Station</li>
+        <li>HubSpot</li>
         <li>Google Analytics</li>
         <li>Looker Studio</li>
         <li>Dashboard com Excel ✦</li>
@@ -1392,14 +576,13 @@
 </section>
 
 <!-- Courses -->
-<section class="skills-section" id="cursos" style="background: var(--cream);">
+<section class="skills-section" id="cursos" style="background:var(--cream);">
   <div class="section-header">
-    <span class="section-number">06</span>
+    <span class="section-number">08</span>
     <h2 class="section-title">Cursos & Certificações</h2>
   </div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;">
-
-    <div class="skill-group" data-reveal style="background: white;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;">
+    <div class="skill-group" data-reveal style="background:white;">
       <div class="skill-group-title">Estratégia & IA</div>
       <ul class="course-list">
         <li><span class="course-name">Storytelling para Marketing Digital</span><span class="course-meta">University of Chicago · 2024</span></li>
@@ -1408,8 +591,7 @@
         <li><span class="course-name">Marketing Digital</span><span class="course-meta">Uniglobo / TV Globo · 2023</span></li>
       </ul>
     </div>
-
-    <div class="skill-group" data-reveal style="background: white;">
+    <div class="skill-group" data-reveal style="background:white;">
       <div class="skill-group-title">CRM & Automação</div>
       <ul class="course-list">
         <li><span class="course-name">RD Station Marketing - Basic</span><span class="course-meta">RD University · 2024</span></li>
@@ -1418,8 +600,7 @@
         <li><span class="course-name">Dashboard com Excel</span><span class="course-meta">Uniglobo / TV Globo · 2023</span></li>
       </ul>
     </div>
-
-    <div class="skill-group" data-reveal style="background: white;">
+    <div class="skill-group" data-reveal style="background:white;">
       <div class="skill-group-title">Inovação & Gestão</div>
       <ul class="course-list">
         <li><span class="course-name">Criatividade e Inovação</span><span class="course-meta">Uniglobo / TV Globo · 2020</span></li>
@@ -1428,16 +609,13 @@
         <li><span class="course-name">Segurança da Informação & LGPD</span><span class="course-meta">Uniglobo / TV Globo · 2024</span></li>
       </ul>
     </div>
-
   </div>
 </section>
 
 <!-- Contact -->
 <section class="contact" id="contato">
   <p class="contact-eyebrow">Vamos conversar</p>
-  <h2 class="contact-headline">
-    Pronta para<br><em style="font-family: var(--serif); font-style: italic; color: var(--accent);">o próximo capítulo</em>
-  </h2>
+  <h2 class="contact-headline">Pronta para<br><em style="font-family:var(--serif);font-style:italic;color:var(--accent);">o próximo capítulo</em></h2>
   <div class="contact-links">
     <a href="mailto:mari.anitelli@gmail.com" class="contact-link">✉ mari.anitelli@gmail.com</a>
     <a href="https://linkedin.com/in/marifcass/" class="contact-link" target="_blank">linkedin.com/in/marifcass</a>
@@ -1445,200 +623,143 @@
   </div>
 </section>
 
-<footer>
-  © 2026 Mariana da Fonseca Garcia Cassiano · Marketing & Eventos · Vila Velha, ES
-</footer>
+<footer>© 2026 Mariana da Fonseca Garcia Cassiano · Marketing & Eventos · Vila Velha, ES</footer>
 
-<!-- Modals -->
+<!-- Project Modal -->
 <div class="modal-overlay" id="modal" onclick="closeModal(event)">
   <div class="modal-content">
-    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active')">✕</button>
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active');document.body.style.overflow=''">✕</button>
     <div class="modal-title" id="modal-title"></div>
     <div class="modal-body" id="modal-body"></div>
   </div>
 </div>
 
 <script>
-  const galleryData = {
-  'bbb1': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_8.jpg', caption: 'Confessionário BBB — influenciadores', prev: 'wa7', next: 'bbb2' },
-  'bbb2': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_9.jpg', caption: 'Confessionário BBB 22 — Shopping Vitória', prev: 'bbb1', next: 'bbb3' },
-  'bbb3': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_10.jpg', caption: 'Confessionário BBB — estrutura', prev: 'bbb2', next: 'wa2' },
-  'wa2': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_11.jpg', caption: 'Jornal do Campo — evento', prev: 'bbb3', next: 'wa3' },
-  'wa3': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_12.jpg', caption: 'Ativação BBB — mascote', prev: 'wa2', next: 'wa4' },
-  'wa4': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_13.jpg', caption: 'Ativação BBB — robô', prev: 'wa3', next: 'wa5' },
-  'wa5': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_14.jpg', caption: 'Ativação TV Globo — cenário', prev: 'wa4', next: 'wa6' },
-  'wa6': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_15.jpg', caption: 'BBB — confessionário bastidores', prev: 'wa5', next: 'wa7' },
-  'wa7_PLACEHOLDER': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_31.jpg', caption: 'Ativação Pequenos Gênios', prev: 'wa6', next: 'bbb1' },
-};
+  // ── Lightbox ──────────────────────────────────────────────────────────────
+  const galleries = {
+    prof: [
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_8.jpg',  caption: 'Confessionário BBB — influenciadores' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_9.jpg',  caption: 'Confessionário BBB 22 — Shopping Vitória' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_10.jpg', caption: 'Confessionário BBB — estrutura' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_11.jpg', caption: 'Jornal do Campo — evento' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_12.jpg', caption: 'Ativação BBB — mascote' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_13.jpg', caption: 'Ativação BBB — robô' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_14.jpg', caption: 'Ativação TV Globo — cenário' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_15.jpg', caption: 'BBB — confessionário bastidores' },
+    ],
+    personal: [
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_2.jpg', caption: 'Na praia — amor pelo surf e natureza' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_4.jpg', caption: 'Com Vitória — noivado' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_6.jpg', caption: 'Celebrando o noivado' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_7.jpg', caption: 'Com Vitória' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_3.jpg', caption: 'Corrida do Flamengo' },
+      { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_5.jpg', caption: 'Família Flamengo' },
+    ]
+  };
 
-  let currentKey = null;
+  let activeGallery = null, activeIndex = 0;
 
-  function openGallery(key) {
-    currentKey = key;
-    const d = galleryData[key];
-    document.getElementById('lightbox-img').src = d.src;
-    document.getElementById('lightbox-caption').textContent = d.caption;
+  function openLightbox(gallery, index) {
+    activeGallery = gallery;
+    activeIndex = index;
+    renderLightbox();
     document.getElementById('lightbox').classList.add('active');
     document.body.style.overflow = 'hidden';
   }
 
-  function navGallery(dir) {
-    const d = galleryData[currentKey];
-    openGallery(dir === 'prev' ? d.prev : d.next);
+  function renderLightbox() {
+    const item = galleries[activeGallery][activeIndex];
+    document.getElementById('lightbox-img').src = item.src;
+    document.getElementById('lightbox-caption').textContent = item.caption;
+  }
+
+  function navLightbox(dir) {
+    const len = galleries[activeGallery].length;
+    activeIndex = (activeIndex + dir + len) % len;
+    renderLightbox();
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
   }
 
   document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) {
-      this.classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    if (e.target === this) closeLightbox();
   });
 
   document.addEventListener('keydown', function(e) {
     if (!document.getElementById('lightbox').classList.contains('active')) return;
-    if (e.key === 'ArrowLeft') navGallery('prev');
-    if (e.key === 'ArrowRight') navGallery('next');
-    if (e.key === 'Escape') {
-      document.getElementById('lightbox').classList.remove('active');
-      document.body.style.overflow = '';
-    }
+    if (e.key === 'ArrowLeft')  navLightbox(-1);
+    if (e.key === 'ArrowRight') navLightbox(1);
+    if (e.key === 'Escape')     closeLightbox();
   });
 
-
-  const personalData = {
-    'p1': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_2.jpg', caption: 'Na praia — amor pelo surf e natureza', prev: 'p6', next: 'p2' },
-    'p2': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_4.jpg', caption: 'Com Vitória — noivado', prev: 'p1', next: 'p3' },
-    'p3': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_6.jpg', caption: 'Celebrando o noivado', prev: 'p2', next: 'p4' },
-    'p4': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_7.jpg', caption: 'Com Vitória', prev: 'p3', next: 'p5' },
-    'p5': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_3.jpg', caption: 'Corrida do Flamengo', prev: 'p4', next: 'p6' },
-    'p6': { src: 'https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_5.jpg', caption: 'Família Flamengo', prev: 'p5', next: 'p1' },
-  };
-
-  function openGallery2(key) {
-    currentKey = key;
-    const d = personalData[key];
-    document.getElementById('lightbox-img').src = d.src;
-    document.getElementById('lightbox-caption').textContent = d.caption;
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
-    // override nav to use personalData
-    window._activeGallery = 'personal';
-  }
-
-  // Patch navGallery to support both galleries
-  const _origNav = navGallery;
-  function navGallery(dir) {
-    if (window._activeGallery === 'personal') {
-      const d = personalData[currentKey];
-      openGallery2(dir === 'prev' ? d.prev : d.next);
-    } else {
-      const d = galleryData[currentKey];
-      openGallery(dir === 'prev' ? d.prev : d.next);
-    }
-  }
-
-  // Reset gallery type when opening professional gallery
-  const _origOpenGallery = openGallery;
-  function openGallery(key) {
-    window._activeGallery = 'professional';
-    _origOpenGallery(key);
-  }
-
-
-
-
-
-
-
-  // Navbar scroll
+  // ── Navbar ────────────────────────────────────────────────────────────────
   window.addEventListener('scroll', () => {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
   });
 
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('[data-reveal]');
+  // ── Reveal ────────────────────────────────────────────────────────────────
   const observer = new IntersectionObserver(entries => {
     entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 100);
-      }
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100);
     });
   }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+  document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
-  // Modal content
+  // ── Modals ────────────────────────────────────────────────────────────────
   const modalData = {
     bbb: {
-      title: '🎙️ Confessionário BBB — 4 anos consecutivos',
-      body: `<p>Por 4 edições consecutivas do Big Brother Brasil, coordenei a ativação oficial no Espírito Santo — um dos projetos de maior visibilidade e exigência da Rede Gazeta.</p>
-      <br><p><strong>Responsabilidades:</strong> gestão completa de fornecedores, produção, comunicação com TV Globo, logística e experiência do público ao vivo.</p>
-      <br><p><strong>Desafio:</strong> prazo fixo (transmissão ao vivo), padrão de qualidade TV Globo, alta exposição pública e coordenação de múltiplas equipes simultâneas.</p>
-      <br><p><strong>Resultado:</strong> projeto executado com excelência por 4 anos, reconhecido internamente e base para o Prêmio Aberje 2023.</p>`
+      title: '🎙️ Confessionário BBB: 4 anos consecutivos',
+      body: `<p>Por 4 edições consecutivas do Big Brother Brasil, coordenei a ativação oficial no Espírito Santo, um dos projetos de maior visibilidade e exigência da Rede Gazeta.</p><br>
+      <p><strong>Responsabilidades:</strong> gestão completa de fornecedores, produção, comunicação com TV Globo, logística e experiência do público ao vivo.</p><br>
+      <p><strong>Desafio:</strong> prazo fixo (transmissão ao vivo), padrão de qualidade TV Globo, alta exposição pública e coordenação de múltiplas equipes simultâneas.</p><br>
+      <p><strong>Resultado:</strong> projeto executado com excelência por 4 anos, reconhecido internamente e base para o Prêmio Aberje 2023.</p>`
     },
     aberje: {
       title: '🏆 Prêmio Aberje Regional 2023',
-      body: `<p>A campanha <strong>"Informação de Verdade"</strong> foi concebida em período eleitoral com um objetivo claro: posicionar a Rede Gazeta como fonte confiável diante do cenário de desinformação.</p>
-      <br><p><strong>Conceito:</strong> combate às fake news com responsabilidade editorial, alcance de massa e linguagem acessível ao público capixaba.</p>
-      <br><p><strong>Reconhecimento:</strong> Prêmio Aberje Regional — o maior prêmio de comunicação empresarial do Brasil, categoria institucional.</p>`
+      body: `<p>A campanha <strong>"Informação de Verdade"</strong> foi concebida em período eleitoral com um objetivo claro: posicionar a Rede Gazeta como fonte confiável diante do cenário de desinformação.</p><br>
+      <p><strong>Conceito:</strong> combate às fake news com responsabilidade editorial, alcance de massa e linguagem acessível ao público capixaba.</p><br>
+      <p><strong>Reconhecimento:</strong> Prêmio Aberje Regional, o maior prêmio de comunicação empresarial do Brasil, categoria institucional.</p>`
     },
     intersolar: {
-      title: '☀️ Intersolar South America',
-      body: `<p>Ao entrar na Fotus, um desafio imediato: dominar um setor altamente técnico (energia solar) e entregar uma campanha anual para ser apresentada na <strong>maior feira de energia solar da América Latina</strong>.</p>
-      <br><p><strong>O que construí:</strong> planejamento estratégico anual completo, posicionamento de marca, campanha integrada e material para o evento.</p>
-      <br><p><strong>O diferencial:</strong> aprendizado acelerado em setor técnico sem experiência prévia — provando capacidade de adaptação e entrega em qualquer segmento.</p>`
+      title: '☀️ Campanha Anual Fotus: Intersolar South America',
+      body: `<p>Responsável pelo estudo de mercado e pela construção do mote e da campanha anual da Fotus, apresentada na <strong>Intersolar South America</strong>, a maior feira e congresso de energia solar da América Latina, com público nacional e internacional.</p><br>
+      <p><strong>O que construí:</strong> planejamento estratégico da jornada do cliente para o evento, criando a narrativa que posicionou a marca diante de expositores, investidores e especialistas do setor de todo o Brasil e do exterior.</p>`
     },
     novelas: {
       title: '📺 Ativações de Novelas Globo',
-      body: `<p>Gestão de ativações de campanhas de novelas da TV Globo no Espírito Santo, com coordenação de fornecedores, materiais gráficos, ações ao vivo e alinhamento com o padrão da emissora.</p>
-      <br><p><strong>Projetos:</strong> múltiplas novelas ao longo de quase 6 anos na Rede Gazeta, cada uma com identidade visual e mecânica distintas.</p>`
+      body: `<p>Gestão de ativações de campanhas de novelas da TV Globo no Espírito Santo, com coordenação de fornecedores, materiais gráficos, ações ao vivo e alinhamento com o padrão da emissora.</p><br>
+      <p><strong>Projetos:</strong> múltiplas novelas ao longo de quase 6 anos na Rede Gazeta, cada uma com identidade visual e mecânica distintas.</p>`
     },
     crm: {
-      title: '📊 Estruturação de CRM — Fotus',
-      body: `<p>Após demonstrar visão analítica e capacidade de mapear a jornada do cliente no planejamento estratégico, fui convidada internamente para liderar a estruturação do CRM da empresa.</p>
-      <br><p><strong>O que fiz:</strong> mapeamento da jornada do cliente, definição de funil, configuração de fluxos, treinamento de equipe e análise de métricas.</p>
-      <br><p><strong>Resultado:</strong> transição interna que refletiu reconhecimento por performance e capacidade de aprendizado em novas ferramentas.</p>
-      <div class="media-placeholder"><span>📈</span>Adicione aqui dashboards e resultados (dados anonimizados)</div>`
+      title: '📊 Estruturação de CRM: Fotus',
+      body: `<p>Responsável pela estruturação e evolução do ecossistema de CRM da Fotus. Fluxos de automação, segmentação de base e réguas de relacionamento para os setores solar e agro, conectando dados com narrativa de marca.</p><br>
+      <p><strong>Atuação integrada</strong> com as áreas comercial e de marketing para garantir que cada ponto de contato com o cliente seja consistente, relevante e orientado a resultado.</p>`
     },
     branding: {
-      title: '🎨 Construção de Marca — Rede Gazeta',
-      body: `<p>Durante a Rede Gazeta, liderei a criação de identidade visual completa para dois produtos digitais da emissora, do zero ao manual de marca.</p>
-      <br>
-      <p><strong>HZ</strong> — plataforma de conteúdo jovem da Rede Gazeta. Desenvolvi nomenclatura, logotipo, paleta de cores, tipografia, área de arejamento, versões monocromáticas, backgrounds e regras de uso indevido.</p>
-      <br>
-      <p><strong>Fonte Hub</strong> — hub de criadores de conteúdo da Rede Gazeta. Criação de identidade visual, posicionamento e sistema visual integrado ao ecossistema da emissora.</p>
-      <br>
-      <p><strong>Escopo em ambos:</strong> naming, conceito, logotipo, paleta, tipografia, sistema visual, manual de marca e guidelines de aplicação.</p>
+      title: '🎨 Construção de Marca: Rede Gazeta',
+      body: `<p>Liderei a criação de identidade visual completa para dois produtos digitais da Rede Gazeta, do zero ao manual de marca.</p><br>
+      <p><strong>HZ</strong>: plataforma de conteúdo jovem. Naming, logotipo, paleta, tipografia, versões monocromáticas e manual completo.</p><br>
+      <p><strong>Fonte Hub</strong>: hub de criadores de conteúdo. Identidade visual, posicionamento e sistema visual integrado ao ecossistema da emissora.</p>
       <div style="margin-top:28px;">
         <p style="font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;">Documentos</p>
         <div style="display:flex;flex-direction:column;gap:10px;">
-          <a href="https://drive.google.com/file/d/1y95JMCFUA59l0CMzY9XswayZGJcI-Rrt/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;transition:border-color .25s,background .25s;" onmouseover="this.style.borderColor='var(--accent)';this.style.background='rgba(196,133,90,0.04)'" onmouseout="this.style.borderColor='var(--line)';this.style.background='transparent'">
-            <span style="font-size:18px;">📄</span>
-            <span style="flex:1;">Fonte Hub — Identidade Visual</span>
-            <span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
+          <a href="https://drive.google.com/file/d/1y95JMCFUA59l0CMzY9XswayZGJcI-Rrt/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
+            <span style="font-size:18px;">📄</span><span style="flex:1;">Fonte Hub — Identidade Visual</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
           </a>
-          <a href="https://drive.google.com/file/d/1oTyRmVPiQheKqyLVTk6Lr9a2qHuW-B-f/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;transition:border-color .25s,background .25s;" onmouseover="this.style.borderColor='var(--accent)';this.style.background='rgba(196,133,90,0.04)'" onmouseout="this.style.borderColor='var(--line)';this.style.background='transparent'">
-            <span style="font-size:18px;">📄</span>
-            <span style="flex:1;">Fonte Hub — Briefing e Naming</span>
-            <span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
+          <a href="https://drive.google.com/file/d/1oTyRmVPiQheKqyLVTk6Lr9a2qHuW-B-f/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
+            <span style="font-size:18px;">📄</span><span style="flex:1;">Fonte Hub — Briefing e Naming</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
           </a>
-          <a href="https://drive.google.com/file/d/1SLTztIrYqFSRS5Qtl6rjCShsOzSkbAUC/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;transition:border-color .25s,background .25s;" onmouseover="this.style.borderColor='var(--accent)';this.style.background='rgba(196,133,90,0.04)'" onmouseout="this.style.borderColor='var(--line)';this.style.background='transparent'">
-            <span style="font-size:18px;">📄</span>
-            <span style="flex:1;">HZ — Briefing e Naming</span>
-            <span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
+          <a href="https://drive.google.com/file/d/1SLTztIrYqFSRS5Qtl6rjCShsOzSkbAUC/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
+            <span style="font-size:18px;">📄</span><span style="flex:1;">HZ — Briefing e Naming</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
           </a>
-          <a href="https://drive.google.com/file/d/1ngKUglGT0YJmIoPoED5Utkay49VhDI8S/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;transition:border-color .25s,background .25s;" onmouseover="this.style.borderColor='var(--accent)';this.style.background='rgba(196,133,90,0.04)'" onmouseout="this.style.borderColor='var(--line)';this.style.background='transparent'">
-            <span style="font-size:18px;">📄</span>
-            <span style="flex:1;">HZ — Manual de Marca</span>
-            <span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
+          <a href="https://drive.google.com/file/d/1ngKUglGT0YJmIoPoED5Utkay49VhDI8S/view" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:14px 18px;border:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:13px;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--line)'">
+            <span style="font-size:18px;">📄</span><span style="flex:1;">HZ — Manual de Marca</span><span style="font-size:11px;color:var(--accent);letter-spacing:.08em;">ABRIR →</span>
           </a>
         </div>
       </div>`
-    },
-    formacao: {
-      title: '🎓 Formação Acadêmica & Certificações',
-      body: `<p><strong>Graduação:</strong> Publicidade e Propaganda — base em estratégia de comunicação, criação, planejamento de mídia e gestão de marcas.</p>
-      <br><p><strong>Pós-Graduação:</strong> Gestão de Eventos — especialização que formaliza e aprofunda a experiência prática de anos coordenando eventos de grande porte.</p>
-      <br><p><strong>Certificação:</strong> Excel Avançado — habilidade técnica para análise de dados, dashboards e relatórios de performance em marketing.</p>`
     }
   };
 
@@ -1657,63 +778,11 @@
   }
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-    const digitalData = {
-    planner: {
-      content: `
-        <p style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#C4855A;margin-bottom:8px;">Fotus Distribuidora Solar &middot; Marketing</p>
-        <h2 style="font-family:Georgia,serif;font-size:28px;font-weight:400;margin-bottom:24px;line-height:1.2;">Fotus Planner</h2>
-        <p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:20px;">Sistema de planejamento de marketing construído do zero para a Fotus. Substituiu a gestão em planilhas e centralizou todo o planejamento editorial em uma única interface web.</p>
-        <p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:24px;">Integração com IA para auxiliar na criação de copy e briefings de campanhas diretamente na plataforma, acelerando o processo criativo da equipe.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
-          <span class="tag">Planejamento</span>
-          <span class="tag">Conteúdo</span>
-          <span class="tag">IA</span>
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-        </div>
-        <img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_18.jpg" style="width:100%;margin-bottom:12px;">
-        <img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_19.jpg" style="width:100%;">
-      `
-    },
-    onebase: {
-      content: `
-        <p style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#C4855A;margin-bottom:8px;">Fotus Distribuidora Solar &middot; Comercial</p>
-        <h2 style="font-family:Georgia,serif;font-size:28px;font-weight:400;margin-bottom:24px;line-height:1.2;">OneBase CRM</h2>
-        <p style="font-size:14px;line-height:1.8;color:#555;margin-bottom:24px;">Plataforma interna de gestão de base de dados para a equipe comercial da Fotus. Permite importação de planilhas, deduplicação automática por CNPJ, filtros avançados, criação de listas segmentadas e exportação, com controle de acesso por perfil de usuário.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;">
-          <span class="tag">CRM</span>
-          <span class="tag">Gestão de Dados</span>
-          <span class="tag">Deduplicação</span>
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">MySQL</span>
-        </div>
-        <img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_20.jpg" style="width:100%;margin-bottom:12px;">
-        <img src="https://aaxhewvcuogagcueernb.supabase.co/storage/v1/object/public/portfolio-assets/image_21.jpg" style="width:100%;">
-      `
+    if (e.key === 'Escape') {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
     }
-  };
-
-  function openDigitalModal(key) {
-    const data = digitalData[key];
-    document.getElementById("digital-modal-body").innerHTML = data.content;
-    document.getElementById("digitalModal").style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
-
-  function closeDigitalModal() {
-    document.getElementById("digitalModal").style.display = "none";
-    document.body.style.overflow = "";
-  }
-
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") closeDigitalModal();
   });
-
+</script>
 </body>
 </html>
-
-</script>
